@@ -1,0 +1,905 @@
+   1              		.cpu cortex-m0plus
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"sam_ba_serial.c"
+  14              		.section	.text.serial_open,"ax",%progbits
+  15              		.align	1
+  16              		.global	serial_open
+  17              		.code	16
+  18              		.thumb_func
+  20              	serial_open:
+  21 0000 10B5     		push	{r4, lr}
+  22 0002 1648     		ldr	r0, .L2
+  23 0004 0124     		mov	r4, #1
+  24 0006 FFF7FEFF 		bl	pinMux
+  25 000a 6442     		neg	r4, r4
+  26 000c 1448     		ldr	r0, .L2+4
+  27 000e FFF7FEFF 		bl	pinMux
+  28 0012 201C     		mov	r0, r4
+  29 0014 FFF7FEFF 		bl	pinMux
+  30 0018 201C     		mov	r0, r4
+  31 001a FFF7FEFF 		bl	pinMux
+  32 001e 114B     		ldr	r3, .L2+8
+  33 0020 4021     		mov	r1, #64
+  34 0022 1A6A     		ldr	r2, [r3, #32]
+  35              		@ sp needed
+  36 0024 0A43     		orr	r2, r1
+  37 0026 1A62     		str	r2, [r3, #32]
+  38 0028 0F4B     		ldr	r3, .L2+12
+  39 002a 104A     		ldr	r2, .L2+16
+  40 002c 5A80     		strh	r2, [r3, #2]
+  41 002e FFF7FEFF 		bl	waitForSync
+  42 0032 8022     		mov	r2, #128
+  43 0034 0E48     		ldr	r0, .L2+20
+  44 0036 0F49     		ldr	r1, .L2+24
+  45 0038 5203     		lsl	r2, r2, #13
+  46 003a FFF7FEFF 		bl	uart_basic_init
+  47 003e 0E4A     		ldr	r2, .L2+28
+  48 0040 0023     		mov	r3, #0
+  49 0042 1370     		strb	r3, [r2]
+  50 0044 0D4A     		ldr	r2, .L2+32
+  51 0046 1370     		strb	r3, [r2]
+  52 0048 0D4A     		ldr	r2, .L2+36
+  53 004a 1370     		strb	r3, [r2]
+  54 004c 0D4A     		ldr	r2, .L2+40
+  55 004e 1370     		strb	r3, [r2]
+  56 0050 0D4A     		ldr	r2, .L2+44
+  57 0052 1370     		strb	r3, [r2]
+  58 0054 0D4A     		ldr	r2, .L2+48
+  59 0056 1370     		strb	r3, [r2]
+  60 0058 10BD     		pop	{r4, pc}
+  61              	.L3:
+  62 005a C046     		.align	2
+  63              	.L2:
+  64 005c 03002800 		.word	2621443
+  65 0060 03002900 		.word	2686979
+  66 0064 00040040 		.word	1073742848
+  67 0068 000C0040 		.word	1073744896
+  68 006c 18400000 		.word	16408
+  69 0070 00180042 		.word	1107302400
+  70 0074 2AF60000 		.word	63018
+  71 0078 00000000 		.word	b_sharp_received
+  72 007c 00000000 		.word	idx_rx_read
+  73 0080 00000000 		.word	idx_rx_write
+  74 0084 00000000 		.word	idx_tx_read
+  75 0088 00000000 		.word	idx_tx_write
+  76 008c 00000000 		.word	error_timeout
+  78              		.section	.text.serial_close,"ax",%progbits
+  79              		.align	1
+  80              		.global	serial_close
+  81              		.code	16
+  82              		.thumb_func
+  84              	serial_close:
+  85 0000 08B5     		push	{r3, lr}
+  86 0002 0248     		ldr	r0, .L5
+  87 0004 FFF7FEFF 		bl	uart_disable
+  88              		@ sp needed
+  89 0008 08BD     		pop	{r3, pc}
+  90              	.L6:
+  91 000a C046     		.align	2
+  92              	.L5:
+  93 000c 00180042 		.word	1107302400
+  95              		.section	.text.serial_putc,"ax",%progbits
+  96              		.align	1
+  97              		.global	serial_putc
+  98              		.code	16
+  99              		.thumb_func
+ 101              	serial_putc:
+ 102 0000 08B5     		push	{r3, lr}
+ 103 0002 C1B2     		uxtb	r1, r0
+ 104 0004 0248     		ldr	r0, .L8
+ 105 0006 FFF7FEFF 		bl	uart_write_byte
+ 106              		@ sp needed
+ 107 000a 0120     		mov	r0, #1
+ 108 000c 08BD     		pop	{r3, pc}
+ 109              	.L9:
+ 110 000e C046     		.align	2
+ 111              	.L8:
+ 112 0010 00180042 		.word	1107302400
+ 114              		.section	.text.serial_is_rx_ready,"ax",%progbits
+ 115              		.align	1
+ 116              		.global	serial_is_rx_ready
+ 117              		.code	16
+ 118              		.thumb_func
+ 120              	serial_is_rx_ready:
+ 121 0000 024B     		ldr	r3, .L11
+ 122              		@ sp needed
+ 123 0002 187E     		ldrb	r0, [r3, #24]
+ 124 0004 4007     		lsl	r0, r0, #29
+ 125 0006 C00F     		lsr	r0, r0, #31
+ 126 0008 7047     		bx	lr
+ 127              	.L12:
+ 128 000a C046     		.align	2
+ 129              	.L11:
+ 130 000c 00180042 		.word	1107302400
+ 132              		.section	.text.serial_getc,"ax",%progbits
+ 133              		.align	1
+ 134              		.global	serial_getc
+ 135              		.code	16
+ 136              		.thumb_func
+ 138              	serial_getc:
+ 139 0000 08B5     		push	{r3, lr}
+ 140              	.L15:
+ 141 0002 FFF7FEFF 		bl	serial_is_rx_ready
+ 142 0006 0028     		cmp	r0, #0
+ 143 0008 FBD0     		beq	.L15
+ 144 000a 0248     		ldr	r0, .L17
+ 145 000c FFF7FEFF 		bl	uart_read_byte
+ 146              		@ sp needed
+ 147 0010 08BD     		pop	{r3, pc}
+ 148              	.L18:
+ 149 0012 C046     		.align	2
+ 150              	.L17:
+ 151 0014 00180042 		.word	1107302400
+ 153              		.section	.text.serial_sharp_received,"ax",%progbits
+ 154              		.align	1
+ 155              		.global	serial_sharp_received
+ 156              		.code	16
+ 157              		.thumb_func
+ 159              	serial_sharp_received:
+ 160 0000 08B5     		push	{r3, lr}
+ 161 0002 FFF7FEFF 		bl	serial_is_rx_ready
+ 162 0006 0023     		mov	r3, #0
+ 163 0008 9842     		cmp	r0, r3
+ 164 000a 05D0     		beq	.L20
+ 165 000c FFF7FEFF 		bl	serial_getc
+ 166 0010 031C     		mov	r3, r0
+ 167 0012 233B     		sub	r3, r3, #35
+ 168 0014 5A42     		neg	r2, r3
+ 169 0016 5341     		adc	r3, r3, r2
+ 170              	.L20:
+ 171 0018 181C     		mov	r0, r3
+ 172              		@ sp needed
+ 173 001a 08BD     		pop	{r3, pc}
+ 175              		.section	.text.serial_readc,"ax",%progbits
+ 176              		.align	1
+ 177              		.global	serial_readc
+ 178              		.code	16
+ 179              		.thumb_func
+ 181              	serial_readc:
+ 182 0000 054B     		ldr	r3, .L24
+ 183 0002 0649     		ldr	r1, .L24+4
+ 184 0004 1A78     		ldrb	r2, [r3]
+ 185              		@ sp needed
+ 186 0006 D2B2     		uxtb	r2, r2
+ 187 0008 885C     		ldrb	r0, [r1, r2]
+ 188 000a 1A78     		ldrb	r2, [r3]
+ 189 000c 7F21     		mov	r1, #127
+ 190 000e 0132     		add	r2, r2, #1
+ 191 0010 0A40     		and	r2, r1
+ 192 0012 C0B2     		uxtb	r0, r0
+ 193 0014 1A70     		strb	r2, [r3]
+ 194 0016 7047     		bx	lr
+ 195              	.L25:
+ 196              		.align	2
+ 197              	.L24:
+ 198 0018 00000000 		.word	idx_rx_read
+ 199 001c 00000000 		.word	buffer_rx_usart
+ 201              		.section	.text.serial_putdata,"ax",%progbits
+ 202              		.align	1
+ 203              		.global	serial_putdata
+ 204              		.code	16
+ 205              		.thumb_func
+ 207              	serial_putdata:
+ 208 0000 70B5     		push	{r4, r5, r6, lr}
+ 209 0002 041C     		mov	r4, r0
+ 210 0004 0D1C     		mov	r5, r1
+ 211 0006 4618     		add	r6, r0, r1
+ 212              	.L27:
+ 213 0008 B442     		cmp	r4, r6
+ 214 000a 04D0     		beq	.L29
+ 215 000c 2078     		ldrb	r0, [r4]
+ 216 000e FFF7FEFF 		bl	serial_putc
+ 217 0012 0134     		add	r4, r4, #1
+ 218 0014 F8E7     		b	.L27
+ 219              	.L29:
+ 220 0016 281C     		mov	r0, r5
+ 221              		@ sp needed
+ 222 0018 70BD     		pop	{r4, r5, r6, pc}
+ 224              		.section	.text.serial_getdata,"ax",%progbits
+ 225              		.align	1
+ 226              		.global	serial_getdata
+ 227              		.code	16
+ 228              		.thumb_func
+ 230              	serial_getdata:
+ 231 0000 10B5     		push	{r4, lr}
+ 232 0002 041C     		mov	r4, r0
+ 233 0004 FFF7FEFF 		bl	serial_getc
+ 234              		@ sp needed
+ 235 0008 2070     		strb	r0, [r4]
+ 236 000a 0120     		mov	r0, #1
+ 237 000c 10BD     		pop	{r4, pc}
+ 239              		.section	.text.serial_add_crc,"ax",%progbits
+ 240              		.align	1
+ 241              		.global	serial_add_crc
+ 242              		.code	16
+ 243              		.thumb_func
+ 245              	serial_add_crc:
+ 246 0000 0B0A     		lsr	r3, r1, #8
+ 247 0002 5840     		eor	r0, r3
+ 248 0004 034B     		ldr	r3, .L32
+ 249 0006 4000     		lsl	r0, r0, #1
+ 250 0008 C05A     		ldrh	r0, [r0, r3]
+ 251 000a 0902     		lsl	r1, r1, #8
+ 252 000c 4840     		eor	r0, r1
+ 253 000e 80B2     		uxth	r0, r0
+ 254              		@ sp needed
+ 255 0010 7047     		bx	lr
+ 256              	.L33:
+ 257 0012 C046     		.align	2
+ 258              	.L32:
+ 259 0014 00000000 		.word	.LANCHOR0
+ 261              		.section	.text.getbytes,"ax",%progbits
+ 262              		.align	1
+ 263              		.code	16
+ 264              		.thumb_func
+ 266              	getbytes:
+ 267 0000 F7B5     		push	{r0, r1, r2, r4, r5, r6, r7, lr}
+ 268 0002 0024     		mov	r4, #0
+ 269 0004 051C     		mov	r5, r0
+ 270 0006 0F1C     		mov	r7, r1
+ 271 0008 261C     		mov	r6, r4
+ 272              	.L35:
+ 273 000a BC42     		cmp	r4, r7
+ 274 000c 20D0     		beq	.L43
+ 275 000e FFF7FEFF 		bl	serial_getc
+ 276 0012 114B     		ldr	r3, .L44
+ 277 0014 C0B2     		uxtb	r0, r0
+ 278 0016 1B78     		ldrb	r3, [r3]
+ 279 0018 0190     		str	r0, [sp, #4]
+ 280 001a 002B     		cmp	r3, #0
+ 281 001c 1AD1     		bne	.L40
+ 282 001e 311C     		mov	r1, r6
+ 283 0020 FFF7FEFF 		bl	serial_add_crc
+ 284 0024 0D4B     		ldr	r3, .L44+4
+ 285 0026 061C     		mov	r6, r0
+ 286 0028 1A88     		ldrh	r2, [r3]
+ 287 002a 002A     		cmp	r2, #0
+ 288 002c 04D1     		bne	.L37
+ 289 002e 0C4A     		ldr	r2, .L44+8
+ 290 0030 1178     		ldrb	r1, [r2]
+ 291 0032 2A1C     		mov	r2, r5
+ 292 0034 0029     		cmp	r1, #0
+ 293 0036 07D0     		beq	.L38
+ 294              	.L37:
+ 295 0038 0199     		ldr	r1, [sp, #4]
+ 296 003a 6A1C     		add	r2, r5, #1
+ 297 003c 2970     		strb	r1, [r5]
+ 298 003e 802F     		cmp	r7, #128
+ 299 0040 02D1     		bne	.L38
+ 300 0042 1988     		ldrh	r1, [r3]
+ 301 0044 0139     		sub	r1, r1, #1
+ 302 0046 1980     		strh	r1, [r3]
+ 303              	.L38:
+ 304 0048 0134     		add	r4, r4, #1
+ 305 004a A4B2     		uxth	r4, r4
+ 306 004c 151C     		mov	r5, r2
+ 307 004e DCE7     		b	.L35
+ 308              	.L43:
+ 309 0050 301C     		mov	r0, r6
+ 310 0052 00E0     		b	.L36
+ 311              	.L40:
+ 312 0054 0120     		mov	r0, #1
+ 313              	.L36:
+ 314              		@ sp needed
+ 315 0056 FEBD     		pop	{r1, r2, r3, r4, r5, r6, r7, pc}
+ 316              	.L45:
+ 317              		.align	2
+ 318              	.L44:
+ 319 0058 00000000 		.word	error_timeout
+ 320 005c 00000000 		.word	size_of_data
+ 321 0060 00000000 		.word	mode_of_transfer
+ 323              		.section	.text.serial_putdata_xmd,"ax",%progbits
+ 324              		.align	1
+ 325              		.global	serial_putdata_xmd
+ 326              		.code	16
+ 327              		.thumb_func
+ 329              	serial_putdata_xmd:
+ 330 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 331 0002 3E4E     		ldr	r6, .L84
+ 332 0004 85B0     		sub	sp, sp, #20
+ 333 0006 0022     		mov	r2, #0
+ 334 0008 0390     		str	r0, [sp, #12]
+ 335 000a 0C1C     		mov	r4, r1
+ 336 000c 3270     		strb	r2, [r6]
+ 337 000e 3C4B     		ldr	r3, .L84+4
+ 338 0010 9142     		cmp	r1, r2
+ 339 0012 01D1     		bne	.L47
+ 340 0014 0122     		mov	r2, #1
+ 341 0016 01E0     		b	.L83
+ 342              	.L47:
+ 343 0018 3A49     		ldr	r1, .L84+8
+ 344 001a 0C80     		strh	r4, [r1]
+ 345              	.L83:
+ 346 001c 1A70     		strb	r2, [r3]
+ 347 001e 7F23     		mov	r3, #127
+ 348 0020 1C42     		tst	r4, r3
+ 349 0022 01D0     		beq	.L55
+ 350 0024 8034     		add	r4, r4, #128
+ 351 0026 9C43     		bic	r4, r3
+ 352              	.L55:
+ 353 0028 FFF7FEFF 		bl	serial_getc
+ 354 002c 3378     		ldrb	r3, [r6]
+ 355 002e C0B2     		uxtb	r0, r0
+ 356 0030 002B     		cmp	r3, #0
+ 357 0032 07D0     		beq	.L51
+ 358 0034 0025     		mov	r5, #0
+ 359 0036 3570     		strb	r5, [r6]
+ 360 0038 FFF7FEFF 		bl	serial_getc
+ 361 003c 3378     		ldrb	r3, [r6]
+ 362 003e C0B2     		uxtb	r0, r0
+ 363 0040 AB42     		cmp	r3, r5
+ 364 0042 36D1     		bne	.L64
+ 365              	.L51:
+ 366 0044 4328     		cmp	r0, #67
+ 367 0046 03D0     		beq	.L54
+ 368 0048 7128     		cmp	r0, #113
+ 369 004a 53D0     		beq	.L66
+ 370 004c 1528     		cmp	r0, #21
+ 371 004e EBD1     		bne	.L55
+ 372              	.L54:
+ 373 0050 0123     		mov	r3, #1
+ 374 0052 0093     		str	r3, [sp]
+ 375              	.L59:
+ 376 0054 0120     		mov	r0, #1
+ 377 0056 FFF7FEFF 		bl	serial_putc
+ 378 005a 0098     		ldr	r0, [sp]
+ 379 005c FFF7FEFF 		bl	serial_putc
+ 380 0060 0099     		ldr	r1, [sp]
+ 381 0062 8025     		mov	r5, #128
+ 382 0064 C843     		mvn	r0, r1
+ 383 0066 C0B2     		uxtb	r0, r0
+ 384 0068 FFF7FEFF 		bl	serial_putc
+ 385 006c 039B     		ldr	r3, [sp, #12]
+ 386 006e 0027     		mov	r7, #0
+ 387 0070 0293     		str	r3, [sp, #8]
+ 388              	.L63:
+ 389 0072 244A     		ldr	r2, .L84+8
+ 390 0074 1388     		ldrh	r3, [r2]
+ 391 0076 002B     		cmp	r3, #0
+ 392 0078 1DD1     		bne	.L60
+ 393 007a 2149     		ldr	r1, .L84+4
+ 394 007c 0193     		str	r3, [sp, #4]
+ 395 007e 0978     		ldrb	r1, [r1]
+ 396 0080 0029     		cmp	r1, #0
+ 397 0082 18D1     		bne	.L60
+ 398              	.L61:
+ 399 0084 0198     		ldr	r0, [sp, #4]
+ 400 0086 FFF7FEFF 		bl	serial_putc
+ 401 008a 391C     		mov	r1, r7
+ 402 008c 0198     		ldr	r0, [sp, #4]
+ 403 008e FFF7FEFF 		bl	serial_add_crc
+ 404 0092 013D     		sub	r5, r5, #1
+ 405 0094 071C     		mov	r7, r0
+ 406 0096 002D     		cmp	r5, #0
+ 407 0098 EBD1     		bne	.L63
+ 408 009a 000A     		lsr	r0, r0, #8
+ 409 009c C0B2     		uxtb	r0, r0
+ 410 009e FFF7FEFF 		bl	serial_putc
+ 411 00a2 F8B2     		uxtb	r0, r7
+ 412 00a4 FFF7FEFF 		bl	serial_putc
+ 413 00a8 FFF7FEFF 		bl	serial_getc
+ 414 00ac 3378     		ldrb	r3, [r6]
+ 415 00ae 002B     		cmp	r3, #0
+ 416 00b0 0AD0     		beq	.L82
+ 417              	.L64:
+ 418 00b2 3570     		strb	r5, [r6]
+ 419 00b4 1FE0     		b	.L52
+ 420              	.L60:
+ 421 00b6 0299     		ldr	r1, [sp, #8]
+ 422 00b8 013B     		sub	r3, r3, #1
+ 423 00ba 0978     		ldrb	r1, [r1]
+ 424 00bc 1380     		strh	r3, [r2]
+ 425 00be 029B     		ldr	r3, [sp, #8]
+ 426 00c0 0191     		str	r1, [sp, #4]
+ 427 00c2 0133     		add	r3, r3, #1
+ 428 00c4 0293     		str	r3, [sp, #8]
+ 429 00c6 DDE7     		b	.L61
+ 430              	.L82:
+ 431 00c8 C0B2     		uxtb	r0, r0
+ 432 00ca 0628     		cmp	r0, #6
+ 433 00cc 07D1     		bne	.L56
+ 434 00ce 009B     		ldr	r3, [sp]
+ 435 00d0 0399     		ldr	r1, [sp, #12]
+ 436 00d2 0133     		add	r3, r3, #1
+ 437 00d4 DBB2     		uxtb	r3, r3
+ 438 00d6 8031     		add	r1, r1, #128
+ 439 00d8 0093     		str	r3, [sp]
+ 440 00da 803C     		sub	r4, r4, #128
+ 441 00dc 0391     		str	r1, [sp, #12]
+ 442              	.L56:
+ 443 00de 002C     		cmp	r4, #0
+ 444 00e0 B8D1     		bne	.L59
+ 445 00e2 0420     		mov	r0, #4
+ 446 00e4 FFF7FEFF 		bl	serial_putc
+ 447 00e8 FFF7FEFF 		bl	serial_getc
+ 448 00ec 044B     		ldr	r3, .L84+4
+ 449 00ee 0125     		mov	r5, #1
+ 450 00f0 1C70     		strb	r4, [r3]
+ 451 00f2 00E0     		b	.L52
+ 452              	.L66:
+ 453 00f4 0025     		mov	r5, #0
+ 454              	.L52:
+ 455 00f6 281C     		mov	r0, r5
+ 456 00f8 05B0     		add	sp, sp, #20
+ 457              		@ sp needed
+ 458 00fa F0BD     		pop	{r4, r5, r6, r7, pc}
+ 459              	.L85:
+ 460              		.align	2
+ 461              	.L84:
+ 462 00fc 00000000 		.word	error_timeout
+ 463 0100 00000000 		.word	mode_of_transfer
+ 464 0104 00000000 		.word	size_of_data
+ 466              		.section	.text.serial_getdata_xmd,"ax",%progbits
+ 467              		.align	1
+ 468              		.global	serial_getdata_xmd
+ 469              		.code	16
+ 470              		.thumb_func
+ 472              	serial_getdata_xmd:
+ 473 0000 F0B5     		push	{r4, r5, r6, r7, lr}
+ 474 0002 384C     		ldr	r4, .L120
+ 475 0004 87B0     		sub	sp, sp, #28
+ 476 0006 0023     		mov	r3, #0
+ 477 0008 0190     		str	r0, [sp, #4]
+ 478 000a 2370     		strb	r3, [r4]
+ 479 000c 9942     		cmp	r1, r3
+ 480 000e 01D1     		bne	.L87
+ 481 0010 0123     		mov	r3, #1
+ 482 0012 01E0     		b	.L117
+ 483              	.L87:
+ 484 0014 344A     		ldr	r2, .L120+4
+ 485 0016 1180     		strh	r1, [r2]
+ 486              	.L117:
+ 487 0018 344A     		ldr	r2, .L120+8
+ 488 001a 6426     		mov	r6, #100
+ 489 001c 1370     		strb	r3, [r2]
+ 490              	.L95:
+ 491 001e 4320     		mov	r0, #67
+ 492 0020 FFF7FEFF 		bl	serial_putc
+ 493 0024 324F     		ldr	r7, .L120+12
+ 494              	.L89:
+ 495 0026 FFF7FEFF 		bl	serial_is_rx_ready
+ 496 002a 0028     		cmp	r0, #0
+ 497 002c 03D1     		bne	.L90
+ 498 002e 002F     		cmp	r7, #0
+ 499 0030 03D0     		beq	.L92
+ 500 0032 013F     		sub	r7, r7, #1
+ 501 0034 F7E7     		b	.L89
+ 502              	.L90:
+ 503 0036 002F     		cmp	r7, #0
+ 504 0038 03D1     		bne	.L93
+ 505              	.L92:
+ 506 003a 013E     		sub	r6, r6, #1
+ 507 003c 002E     		cmp	r6, #0
+ 508 003e EED1     		bne	.L95
+ 509 0040 4DE0     		b	.L112
+ 510              	.L93:
+ 511 0042 0125     		mov	r5, #1
+ 512              	.L108:
+ 513 0044 FFF7FEFF 		bl	serial_getc
+ 514 0048 2378     		ldrb	r3, [r4]
+ 515 004a 002B     		cmp	r3, #0
+ 516 004c 38D1     		bne	.L119
+ 517 004e C0B2     		uxtb	r0, r0
+ 518 0050 0290     		str	r0, [sp, #8]
+ 519 0052 0128     		cmp	r0, #1
+ 520 0054 05D0     		beq	.L98
+ 521 0056 0428     		cmp	r0, #4
+ 522 0058 3DD1     		bne	.L97
+ 523 005a 0620     		mov	r0, #6
+ 524 005c FFF7FEFF 		bl	serial_putc
+ 525 0060 39E0     		b	.L97
+ 526              	.L98:
+ 527 0062 05AE     		add	r6, sp, #20
+ 528 0064 0221     		mov	r1, #2
+ 529 0066 301C     		mov	r0, r6
+ 530 0068 FFF7FEFF 		bl	getbytes
+ 531 006c 0198     		ldr	r0, [sp, #4]
+ 532 006e 8021     		mov	r1, #128
+ 533 0070 FFF7FEFF 		bl	getbytes
+ 534 0074 2378     		ldrb	r3, [r4]
+ 535 0076 0390     		str	r0, [sp, #12]
+ 536 0078 002B     		cmp	r3, #0
+ 537 007a 18D1     		bne	.L118
+ 538 007c FFF7FEFF 		bl	serial_getc
+ 539 0080 0702     		lsl	r7, r0, #8
+ 540 0082 FFF7FEFF 		bl	serial_getc
+ 541 0086 BFB2     		uxth	r7, r7
+ 542 0088 2378     		ldrb	r3, [r4]
+ 543 008a 3F18     		add	r7, r7, r0
+ 544 008c BFB2     		uxth	r7, r7
+ 545 008e 012B     		cmp	r3, #1
+ 546 0090 0DD0     		beq	.L118
+ 547 0092 039B     		ldr	r3, [sp, #12]
+ 548 0094 9F42     		cmp	r7, r3
+ 549 0096 07D1     		bne	.L103
+ 550 0098 3378     		ldrb	r3, [r6]
+ 551 009a AB42     		cmp	r3, r5
+ 552 009c 04D1     		bne	.L103
+ 553 009e EB43     		mvn	r3, r5
+ 554 00a0 7278     		ldrb	r2, [r6, #1]
+ 555 00a2 DBB2     		uxtb	r3, r3
+ 556 00a4 9A42     		cmp	r2, r3
+ 557 00a6 04D0     		beq	.L104
+ 558              	.L103:
+ 559 00a8 1820     		mov	r0, #24
+ 560 00aa FFF7FEFF 		bl	serial_putc
+ 561              	.L118:
+ 562 00ae 0023     		mov	r3, #0
+ 563 00b0 03E0     		b	.L101
+ 564              	.L104:
+ 565 00b2 0620     		mov	r0, #6
+ 566 00b4 FFF7FEFF 		bl	serial_putc
+ 567 00b8 029B     		ldr	r3, [sp, #8]
+ 568              	.L101:
+ 569 00ba 2278     		ldrb	r2, [r4]
+ 570 00bc 002A     		cmp	r2, #0
+ 571 00be 02D0     		beq	.L105
+ 572              	.L119:
+ 573 00c0 0026     		mov	r6, #0
+ 574 00c2 2670     		strb	r6, [r4]
+ 575 00c4 0BE0     		b	.L112
+ 576              	.L105:
+ 577 00c6 012B     		cmp	r3, #1
+ 578 00c8 05D1     		bne	.L97
+ 579 00ca 019A     		ldr	r2, [sp, #4]
+ 580 00cc 6B1C     		add	r3, r5, #1
+ 581 00ce 8032     		add	r2, r2, #128
+ 582 00d0 DDB2     		uxtb	r5, r3
+ 583 00d2 0192     		str	r2, [sp, #4]
+ 584 00d4 B6E7     		b	.L108
+ 585              	.L97:
+ 586 00d6 054A     		ldr	r2, .L120+8
+ 587 00d8 0023     		mov	r3, #0
+ 588 00da 1370     		strb	r3, [r2]
+ 589 00dc 0126     		mov	r6, #1
+ 590              	.L112:
+ 591 00de 301C     		mov	r0, r6
+ 592 00e0 07B0     		add	sp, sp, #28
+ 593              		@ sp needed
+ 594 00e2 F0BD     		pop	{r4, r5, r6, r7, pc}
+ 595              	.L121:
+ 596              		.align	2
+ 597              	.L120:
+ 598 00e4 00000000 		.word	error_timeout
+ 599 00e8 00000000 		.word	size_of_data
+ 600 00ec 00000000 		.word	mode_of_transfer
+ 601 00f0 00350C00 		.word	800000
+ 603              		.comm	mode_of_transfer,1,1
+ 604              		.comm	size_of_data,2,2
+ 605              		.comm	error_timeout,1,1
+ 606              		.comm	idx_tx_write,1,1
+ 607              		.comm	idx_tx_read,1,1
+ 608              		.comm	buffer_tx_usart,128,1
+ 609              		.comm	idx_rx_write,1,1
+ 610              		.comm	idx_rx_read,1,1
+ 611              		.comm	buffer_rx_usart,128,1
+ 612              		.comm	b_sharp_received,1,1
+ 613              		.section	.rodata.crc16Table,"a",%progbits
+ 614              		.align	1
+ 615              		.set	.LANCHOR0,. + 0
+ 618              	crc16Table:
+ 619 0000 0000     		.short	0
+ 620 0002 2110     		.short	4129
+ 621 0004 4220     		.short	8258
+ 622 0006 6330     		.short	12387
+ 623 0008 8440     		.short	16516
+ 624 000a A550     		.short	20645
+ 625 000c C660     		.short	24774
+ 626 000e E770     		.short	28903
+ 627 0010 0881     		.short	-32504
+ 628 0012 2991     		.short	-28375
+ 629 0014 4AA1     		.short	-24246
+ 630 0016 6BB1     		.short	-20117
+ 631 0018 8CC1     		.short	-15988
+ 632 001a ADD1     		.short	-11859
+ 633 001c CEE1     		.short	-7730
+ 634 001e EFF1     		.short	-3601
+ 635 0020 3112     		.short	4657
+ 636 0022 1002     		.short	528
+ 637 0024 7332     		.short	12915
+ 638 0026 5222     		.short	8786
+ 639 0028 B552     		.short	21173
+ 640 002a 9442     		.short	17044
+ 641 002c F772     		.short	29431
+ 642 002e D662     		.short	25302
+ 643 0030 3993     		.short	-27847
+ 644 0032 1883     		.short	-31976
+ 645 0034 7BB3     		.short	-19589
+ 646 0036 5AA3     		.short	-23718
+ 647 0038 BDD3     		.short	-11331
+ 648 003a 9CC3     		.short	-15460
+ 649 003c FFF3     		.short	-3073
+ 650 003e DEE3     		.short	-7202
+ 651 0040 6224     		.short	9314
+ 652 0042 4334     		.short	13379
+ 653 0044 2004     		.short	1056
+ 654 0046 0114     		.short	5121
+ 655 0048 E664     		.short	25830
+ 656 004a C774     		.short	29895
+ 657 004c A444     		.short	17572
+ 658 004e 8554     		.short	21637
+ 659 0050 6AA5     		.short	-23190
+ 660 0052 4BB5     		.short	-19125
+ 661 0054 2885     		.short	-31448
+ 662 0056 0995     		.short	-27383
+ 663 0058 EEE5     		.short	-6674
+ 664 005a CFF5     		.short	-2609
+ 665 005c ACC5     		.short	-14932
+ 666 005e 8DD5     		.short	-10867
+ 667 0060 5336     		.short	13907
+ 668 0062 7226     		.short	9842
+ 669 0064 1116     		.short	5649
+ 670 0066 3006     		.short	1584
+ 671 0068 D776     		.short	30423
+ 672 006a F666     		.short	26358
+ 673 006c 9556     		.short	22165
+ 674 006e B446     		.short	18100
+ 675 0070 5BB7     		.short	-18597
+ 676 0072 7AA7     		.short	-22662
+ 677 0074 1997     		.short	-26855
+ 678 0076 3887     		.short	-30920
+ 679 0078 DFF7     		.short	-2081
+ 680 007a FEE7     		.short	-6146
+ 681 007c 9DD7     		.short	-10339
+ 682 007e BCC7     		.short	-14404
+ 683 0080 C448     		.short	18628
+ 684 0082 E558     		.short	22757
+ 685 0084 8668     		.short	26758
+ 686 0086 A778     		.short	30887
+ 687 0088 4008     		.short	2112
+ 688 008a 6118     		.short	6241
+ 689 008c 0228     		.short	10242
+ 690 008e 2338     		.short	14371
+ 691 0090 CCC9     		.short	-13876
+ 692 0092 EDD9     		.short	-9747
+ 693 0094 8EE9     		.short	-5746
+ 694 0096 AFF9     		.short	-1617
+ 695 0098 4889     		.short	-30392
+ 696 009a 6999     		.short	-26263
+ 697 009c 0AA9     		.short	-22262
+ 698 009e 2BB9     		.short	-18133
+ 699 00a0 F55A     		.short	23285
+ 700 00a2 D44A     		.short	19156
+ 701 00a4 B77A     		.short	31415
+ 702 00a6 966A     		.short	27286
+ 703 00a8 711A     		.short	6769
+ 704 00aa 500A     		.short	2640
+ 705 00ac 333A     		.short	14899
+ 706 00ae 122A     		.short	10770
+ 707 00b0 FDDB     		.short	-9219
+ 708 00b2 DCCB     		.short	-13348
+ 709 00b4 BFFB     		.short	-1089
+ 710 00b6 9EEB     		.short	-5218
+ 711 00b8 799B     		.short	-25735
+ 712 00ba 588B     		.short	-29864
+ 713 00bc 3BBB     		.short	-17605
+ 714 00be 1AAB     		.short	-21734
+ 715 00c0 A66C     		.short	27814
+ 716 00c2 877C     		.short	31879
+ 717 00c4 E44C     		.short	19684
+ 718 00c6 C55C     		.short	23749
+ 719 00c8 222C     		.short	11298
+ 720 00ca 033C     		.short	15363
+ 721 00cc 600C     		.short	3168
+ 722 00ce 411C     		.short	7233
+ 723 00d0 AEED     		.short	-4690
+ 724 00d2 8FFD     		.short	-625
+ 725 00d4 ECCD     		.short	-12820
+ 726 00d6 CDDD     		.short	-8755
+ 727 00d8 2AAD     		.short	-21206
+ 728 00da 0BBD     		.short	-17141
+ 729 00dc 688D     		.short	-29336
+ 730 00de 499D     		.short	-25271
+ 731 00e0 977E     		.short	32407
+ 732 00e2 B66E     		.short	28342
+ 733 00e4 D55E     		.short	24277
+ 734 00e6 F44E     		.short	20212
+ 735 00e8 133E     		.short	15891
+ 736 00ea 322E     		.short	11826
+ 737 00ec 511E     		.short	7761
+ 738 00ee 700E     		.short	3696
+ 739 00f0 9FFF     		.short	-97
+ 740 00f2 BEEF     		.short	-4162
+ 741 00f4 DDDF     		.short	-8227
+ 742 00f6 FCCF     		.short	-12292
+ 743 00f8 1BBF     		.short	-16613
+ 744 00fa 3AAF     		.short	-20678
+ 745 00fc 599F     		.short	-24743
+ 746 00fe 788F     		.short	-28808
+ 747 0100 8891     		.short	-28280
+ 748 0102 A981     		.short	-32343
+ 749 0104 CAB1     		.short	-20022
+ 750 0106 EBA1     		.short	-24085
+ 751 0108 0CD1     		.short	-12020
+ 752 010a 2DC1     		.short	-16083
+ 753 010c 4EF1     		.short	-3762
+ 754 010e 6FE1     		.short	-7825
+ 755 0110 8010     		.short	4224
+ 756 0112 A100     		.short	161
+ 757 0114 C230     		.short	12482
+ 758 0116 E320     		.short	8419
+ 759 0118 0450     		.short	20484
+ 760 011a 2540     		.short	16421
+ 761 011c 4670     		.short	28742
+ 762 011e 6760     		.short	24679
+ 763 0120 B983     		.short	-31815
+ 764 0122 9893     		.short	-27752
+ 765 0124 FBA3     		.short	-23557
+ 766 0126 DAB3     		.short	-19494
+ 767 0128 3DC3     		.short	-15555
+ 768 012a 1CD3     		.short	-11492
+ 769 012c 7FE3     		.short	-7297
+ 770 012e 5EF3     		.short	-3234
+ 771 0130 B102     		.short	689
+ 772 0132 9012     		.short	4752
+ 773 0134 F322     		.short	8947
+ 774 0136 D232     		.short	13010
+ 775 0138 3542     		.short	16949
+ 776 013a 1452     		.short	21012
+ 777 013c 7762     		.short	25207
+ 778 013e 5672     		.short	29270
+ 779 0140 EAB5     		.short	-18966
+ 780 0142 CBA5     		.short	-23093
+ 781 0144 A895     		.short	-27224
+ 782 0146 8985     		.short	-31351
+ 783 0148 6EF5     		.short	-2706
+ 784 014a 4FE5     		.short	-6833
+ 785 014c 2CD5     		.short	-10964
+ 786 014e 0DC5     		.short	-15091
+ 787 0150 E234     		.short	13538
+ 788 0152 C324     		.short	9411
+ 789 0154 A014     		.short	5280
+ 790 0156 8104     		.short	1153
+ 791 0158 6674     		.short	29798
+ 792 015a 4764     		.short	25671
+ 793 015c 2454     		.short	21540
+ 794 015e 0544     		.short	17413
+ 795 0160 DBA7     		.short	-22565
+ 796 0162 FAB7     		.short	-18438
+ 797 0164 9987     		.short	-30823
+ 798 0166 B897     		.short	-26696
+ 799 0168 5FE7     		.short	-6305
+ 800 016a 7EF7     		.short	-2178
+ 801 016c 1DC7     		.short	-14563
+ 802 016e 3CD7     		.short	-10436
+ 803 0170 D326     		.short	9939
+ 804 0172 F236     		.short	14066
+ 805 0174 9106     		.short	1681
+ 806 0176 B016     		.short	5808
+ 807 0178 5766     		.short	26199
+ 808 017a 7676     		.short	30326
+ 809 017c 1546     		.short	17941
+ 810 017e 3456     		.short	22068
+ 811 0180 4CD9     		.short	-9908
+ 812 0182 6DC9     		.short	-13971
+ 813 0184 0EF9     		.short	-1778
+ 814 0186 2FE9     		.short	-5841
+ 815 0188 C899     		.short	-26168
+ 816 018a E989     		.short	-30231
+ 817 018c 8AB9     		.short	-18038
+ 818 018e ABA9     		.short	-22101
+ 819 0190 4458     		.short	22596
+ 820 0192 6548     		.short	18533
+ 821 0194 0678     		.short	30726
+ 822 0196 2768     		.short	26663
+ 823 0198 C018     		.short	6336
+ 824 019a E108     		.short	2273
+ 825 019c 8238     		.short	14466
+ 826 019e A328     		.short	10403
+ 827 01a0 7DCB     		.short	-13443
+ 828 01a2 5CDB     		.short	-9380
+ 829 01a4 3FEB     		.short	-5313
+ 830 01a6 1EFB     		.short	-1250
+ 831 01a8 F98B     		.short	-29703
+ 832 01aa D89B     		.short	-25640
+ 833 01ac BBAB     		.short	-21573
+ 834 01ae 9ABB     		.short	-17510
+ 835 01b0 754A     		.short	19061
+ 836 01b2 545A     		.short	23124
+ 837 01b4 376A     		.short	27191
+ 838 01b6 167A     		.short	31254
+ 839 01b8 F10A     		.short	2801
+ 840 01ba D01A     		.short	6864
+ 841 01bc B32A     		.short	10931
+ 842 01be 923A     		.short	14994
+ 843 01c0 2EFD     		.short	-722
+ 844 01c2 0FED     		.short	-4849
+ 845 01c4 6CDD     		.short	-8852
+ 846 01c6 4DCD     		.short	-12979
+ 847 01c8 AABD     		.short	-16982
+ 848 01ca 8BAD     		.short	-21109
+ 849 01cc E89D     		.short	-25112
+ 850 01ce C98D     		.short	-29239
+ 851 01d0 267C     		.short	31782
+ 852 01d2 076C     		.short	27655
+ 853 01d4 645C     		.short	23652
+ 854 01d6 454C     		.short	19525
+ 855 01d8 A23C     		.short	15522
+ 856 01da 832C     		.short	11395
+ 857 01dc E01C     		.short	7392
+ 858 01de C10C     		.short	3265
+ 859 01e0 1FEF     		.short	-4321
+ 860 01e2 3EFF     		.short	-194
+ 861 01e4 5DCF     		.short	-12451
+ 862 01e6 7CDF     		.short	-8324
+ 863 01e8 9BAF     		.short	-20581
+ 864 01ea BABF     		.short	-16454
+ 865 01ec D98F     		.short	-28711
+ 866 01ee F89F     		.short	-24584
+ 867 01f0 176E     		.short	28183
+ 868 01f2 367E     		.short	32310
+ 869 01f4 554E     		.short	20053
+ 870 01f6 745E     		.short	24180
+ 871 01f8 932E     		.short	11923
+ 872 01fa B23E     		.short	16050
+ 873 01fc D10E     		.short	3793
+ 874 01fe F01E     		.short	7920
+ 875              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.3 20140228 (release) [ARM/embedded-4_8-br
+DEFINED SYMBOLS
+                            *ABS*:00000000 sam_ba_serial.c
+C:\cygwin\tmp\ccZJiEQf.s:15     .text.serial_open:00000000 $t
+C:\cygwin\tmp\ccZJiEQf.s:20     .text.serial_open:00000000 serial_open
+C:\cygwin\tmp\ccZJiEQf.s:64     .text.serial_open:0000005c $d
+                            *COM*:00000001 b_sharp_received
+                            *COM*:00000001 idx_rx_read
+                            *COM*:00000001 idx_rx_write
+                            *COM*:00000001 idx_tx_read
+                            *COM*:00000001 idx_tx_write
+                            *COM*:00000001 error_timeout
+C:\cygwin\tmp\ccZJiEQf.s:79     .text.serial_close:00000000 $t
+C:\cygwin\tmp\ccZJiEQf.s:84     .text.serial_close:00000000 serial_close
+C:\cygwin\tmp\ccZJiEQf.s:93     .text.serial_close:0000000c $d
+C:\cygwin\tmp\ccZJiEQf.s:96     .text.serial_putc:00000000 $t
+C:\cygwin\tmp\ccZJiEQf.s:101    .text.serial_putc:00000000 serial_putc
+C:\cygwin\tmp\ccZJiEQf.s:112    .text.serial_putc:00000010 $d
+C:\cygwin\tmp\ccZJiEQf.s:115    .text.serial_is_rx_ready:00000000 $t
+C:\cygwin\tmp\ccZJiEQf.s:120    .text.serial_is_rx_ready:00000000 serial_is_rx_ready
+C:\cygwin\tmp\ccZJiEQf.s:130    .text.serial_is_rx_ready:0000000c $d
+C:\cygwin\tmp\ccZJiEQf.s:133    .text.serial_getc:00000000 $t
+C:\cygwin\tmp\ccZJiEQf.s:138    .text.serial_getc:00000000 serial_getc
+C:\cygwin\tmp\ccZJiEQf.s:151    .text.serial_getc:00000014 $d
+C:\cygwin\tmp\ccZJiEQf.s:154    .text.serial_sharp_received:00000000 $t
+C:\cygwin\tmp\ccZJiEQf.s:159    .text.serial_sharp_received:00000000 serial_sharp_received
+C:\cygwin\tmp\ccZJiEQf.s:176    .text.serial_readc:00000000 $t
+C:\cygwin\tmp\ccZJiEQf.s:181    .text.serial_readc:00000000 serial_readc
+C:\cygwin\tmp\ccZJiEQf.s:198    .text.serial_readc:00000018 $d
+                            *COM*:00000080 buffer_rx_usart
+C:\cygwin\tmp\ccZJiEQf.s:202    .text.serial_putdata:00000000 $t
+C:\cygwin\tmp\ccZJiEQf.s:207    .text.serial_putdata:00000000 serial_putdata
+C:\cygwin\tmp\ccZJiEQf.s:225    .text.serial_getdata:00000000 $t
+C:\cygwin\tmp\ccZJiEQf.s:230    .text.serial_getdata:00000000 serial_getdata
+C:\cygwin\tmp\ccZJiEQf.s:240    .text.serial_add_crc:00000000 $t
+C:\cygwin\tmp\ccZJiEQf.s:245    .text.serial_add_crc:00000000 serial_add_crc
+C:\cygwin\tmp\ccZJiEQf.s:259    .text.serial_add_crc:00000014 $d
+C:\cygwin\tmp\ccZJiEQf.s:262    .text.getbytes:00000000 $t
+C:\cygwin\tmp\ccZJiEQf.s:266    .text.getbytes:00000000 getbytes
+C:\cygwin\tmp\ccZJiEQf.s:319    .text.getbytes:00000058 $d
+                            *COM*:00000002 size_of_data
+                            *COM*:00000001 mode_of_transfer
+C:\cygwin\tmp\ccZJiEQf.s:324    .text.serial_putdata_xmd:00000000 $t
+C:\cygwin\tmp\ccZJiEQf.s:329    .text.serial_putdata_xmd:00000000 serial_putdata_xmd
+C:\cygwin\tmp\ccZJiEQf.s:462    .text.serial_putdata_xmd:000000fc $d
+C:\cygwin\tmp\ccZJiEQf.s:467    .text.serial_getdata_xmd:00000000 $t
+C:\cygwin\tmp\ccZJiEQf.s:472    .text.serial_getdata_xmd:00000000 serial_getdata_xmd
+C:\cygwin\tmp\ccZJiEQf.s:598    .text.serial_getdata_xmd:000000e4 $d
+                            *COM*:00000080 buffer_tx_usart
+C:\cygwin\tmp\ccZJiEQf.s:614    .rodata.crc16Table:00000000 $d
+C:\cygwin\tmp\ccZJiEQf.s:618    .rodata.crc16Table:00000000 crc16Table
+
+UNDEFINED SYMBOLS
+pinMux
+waitForSync
+uart_basic_init
+uart_disable
+uart_write_byte
+uart_read_byte

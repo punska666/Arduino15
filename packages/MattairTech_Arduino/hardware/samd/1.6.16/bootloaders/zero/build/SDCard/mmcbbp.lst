@@ -1,0 +1,447 @@
+   1              		.cpu cortex-m0plus
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 4
+  10              		.eabi_attribute 34, 0
+  11              		.eabi_attribute 18, 4
+  12              		.code	16
+  13              		.file	"mmcbbp.c"
+  14              		.global	__aeabi_uidiv
+  15              		.section	.text.setBaud,"ax",%progbits
+  16              		.align	1
+  17              		.global	setBaud
+  18              		.code	16
+  19              		.thumb_func
+  21              	setBaud:
+  22 0000 38B5     		push	{r3, r4, r5, lr}
+  23 0002 0C4B     		ldr	r3, .L7
+  24 0004 0221     		mov	r1, #2
+  25 0006 1A68     		ldr	r2, [r3]
+  26 0008 1D1C     		mov	r5, r3
+  27 000a 8A43     		bic	r2, r1
+  28 000c 1A60     		str	r2, [r3]
+  29              	.L3:
+  30 000e EB69     		ldr	r3, [r5, #28]
+  31 0010 084C     		ldr	r4, .L7
+  32 0012 9A07     		lsl	r2, r3, #30
+  33 0014 FBD4     		bmi	.L3
+  34 0016 4100     		lsl	r1, r0, #1
+  35 0018 0748     		ldr	r0, .L7+4
+  36 001a FFF7FEFF 		bl	__aeabi_uidiv
+  37 001e 0138     		sub	r0, r0, #1
+  38 0020 C0B2     		uxtb	r0, r0
+  39 0022 2073     		strb	r0, [r4, #12]
+  40 0024 2368     		ldr	r3, [r4]
+  41 0026 0222     		mov	r2, #2
+  42 0028 1343     		orr	r3, r2
+  43 002a 2360     		str	r3, [r4]
+  44              	.L5:
+  45 002c EB69     		ldr	r3, [r5, #28]
+  46 002e 9A07     		lsl	r2, r3, #30
+  47 0030 FCD4     		bmi	.L5
+  48              		@ sp needed
+  49 0032 38BD     		pop	{r3, r4, r5, pc}
+  50              	.L8:
+  51              		.align	2
+  52              	.L7:
+  53 0034 001C0042 		.word	1107303424
+  54 0038 006CDC02 		.word	48000000
+  56              		.section	.text.deselect,"ax",%progbits
+  57              		.align	1
+  58              		.global	deselect
+  59              		.code	16
+  60              		.thumb_func
+  62              	deselect:
+  63 0000 08B5     		push	{r3, lr}
+  64 0002 0120     		mov	r0, #1
+  65 0004 1F21     		mov	r1, #31
+  66 0006 0422     		mov	r2, #4
+  67 0008 FFF7FEFF 		bl	pinConfig
+  68              		@ sp needed
+  69 000c 08BD     		pop	{r3, pc}
+  71              		.section	.text.xfer_spi,"ax",%progbits
+  72              		.align	1
+  73              		.global	xfer_spi
+  74              		.code	16
+  75              		.thumb_func
+  77              	xfer_spi:
+  78 0000 064B     		ldr	r3, .L13
+  79 0002 9A6A     		ldr	r2, [r3, #40]
+  80 0004 520A     		lsr	r2, r2, #9
+  81 0006 5202     		lsl	r2, r2, #9
+  82 0008 1043     		orr	r0, r2
+  83 000a 9862     		str	r0, [r3, #40]
+  84              	.L12:
+  85 000c 1A7E     		ldrb	r2, [r3, #24]
+  86 000e 5107     		lsl	r1, r2, #29
+  87 0010 FCD5     		bpl	.L12
+  88 0012 024B     		ldr	r3, .L13
+  89              		@ sp needed
+  90 0014 986A     		ldr	r0, [r3, #40]
+  91 0016 C0B2     		uxtb	r0, r0
+  92 0018 7047     		bx	lr
+  93              	.L14:
+  94 001a C046     		.align	2
+  95              	.L13:
+  96 001c 001C0042 		.word	1107303424
+  98              		.section	.text.send_cmd,"ax",%progbits
+  99              		.align	1
+ 100              		.code	16
+ 101              		.thumb_func
+ 103              	send_cmd:
+ 104 0000 38B5     		push	{r3, r4, r5, lr}
+ 105 0002 43B2     		sxtb	r3, r0
+ 106 0004 041C     		mov	r4, r0
+ 107 0006 0D1C     		mov	r5, r1
+ 108 0008 002B     		cmp	r3, #0
+ 109 000a 07DA     		bge	.L16
+ 110 000c 7720     		mov	r0, #119
+ 111 000e 0021     		mov	r1, #0
+ 112 0010 FFF7F6FF 		bl	send_cmd
+ 113 0014 0128     		cmp	r0, #1
+ 114 0016 2BD8     		bhi	.L17
+ 115 0018 7F23     		mov	r3, #127
+ 116 001a 1C40     		and	r4, r3
+ 117              	.L16:
+ 118 001c 1F21     		mov	r1, #31
+ 119 001e 0522     		mov	r2, #5
+ 120 0020 0120     		mov	r0, #1
+ 121 0022 FFF7FEFF 		bl	pinConfig
+ 122 0026 201C     		mov	r0, r4
+ 123 0028 FFF7FEFF 		bl	xfer_spi
+ 124 002c 280E     		lsr	r0, r5, #24
+ 125 002e FFF7FEFF 		bl	xfer_spi
+ 126 0032 280C     		lsr	r0, r5, #16
+ 127 0034 C0B2     		uxtb	r0, r0
+ 128 0036 FFF7FEFF 		bl	xfer_spi
+ 129 003a 280A     		lsr	r0, r5, #8
+ 130 003c C0B2     		uxtb	r0, r0
+ 131 003e FFF7FEFF 		bl	xfer_spi
+ 132 0042 E8B2     		uxtb	r0, r5
+ 133 0044 FFF7FEFF 		bl	xfer_spi
+ 134 0048 402C     		cmp	r4, #64
+ 135 004a 04D0     		beq	.L21
+ 136 004c 8720     		mov	r0, #135
+ 137 004e 482C     		cmp	r4, #72
+ 138 0050 02D0     		beq	.L18
+ 139 0052 0120     		mov	r0, #1
+ 140 0054 00E0     		b	.L18
+ 141              	.L21:
+ 142 0056 9520     		mov	r0, #149
+ 143              	.L18:
+ 144 0058 FFF7FEFF 		bl	xfer_spi
+ 145 005c 0A24     		mov	r4, #10
+ 146              	.L19:
+ 147 005e FF20     		mov	r0, #255
+ 148 0060 FFF7FEFF 		bl	xfer_spi
+ 149 0064 0306     		lsl	r3, r0, #24
+ 150 0066 03D5     		bpl	.L17
+ 151 0068 013C     		sub	r4, r4, #1
+ 152 006a E4B2     		uxtb	r4, r4
+ 153 006c 002C     		cmp	r4, #0
+ 154 006e F6D1     		bne	.L19
+ 155              	.L17:
+ 156              		@ sp needed
+ 157 0070 38BD     		pop	{r3, r4, r5, pc}
+ 159              		.section	.text.disk_initialize,"ax",%progbits
+ 160              		.align	1
+ 161              		.global	disk_initialize
+ 162              		.code	16
+ 163              		.thumb_func
+ 165              	disk_initialize:
+ 166 0000 73B5     		push	{r0, r1, r4, r5, r6, lr}
+ 167 0002 FFF7FEFF 		bl	deselect
+ 168 0006 5648     		ldr	r0, .L67
+ 169 0008 FFF7FEFF 		bl	pinMux
+ 170 000c 0120     		mov	r0, #1
+ 171 000e 4042     		neg	r0, r0
+ 172 0010 FFF7FEFF 		bl	pinMux
+ 173 0014 5348     		ldr	r0, .L67+4
+ 174 0016 FFF7FEFF 		bl	pinMux
+ 175 001a 5348     		ldr	r0, .L67+8
+ 176 001c FFF7FEFF 		bl	pinMux
+ 177 0020 1F21     		mov	r1, #31
+ 178 0022 0422     		mov	r2, #4
+ 179 0024 0120     		mov	r0, #1
+ 180 0026 FFF7FEFF 		bl	pinConfig
+ 181 002a 504B     		ldr	r3, .L67+12
+ 182 002c 8021     		mov	r1, #128
+ 183 002e 1A6A     		ldr	r2, [r3, #32]
+ 184 0030 0A43     		orr	r2, r1
+ 185 0032 1A62     		str	r2, [r3, #32]
+ 186 0034 4E4B     		ldr	r3, .L67+16
+ 187 0036 0121     		mov	r1, #1
+ 188 0038 1A68     		ldr	r2, [r3]
+ 189 003a 0A43     		orr	r2, r1
+ 190 003c 1A60     		str	r2, [r3]
+ 191              	.L27:
+ 192 003e 1968     		ldr	r1, [r3]
+ 193 0040 0122     		mov	r2, #1
+ 194 0042 4B4C     		ldr	r4, .L67+16
+ 195 0044 1142     		tst	r1, r2
+ 196 0046 FAD1     		bne	.L27
+ 197 0048 E169     		ldr	r1, [r4, #28]
+ 198 004a 1142     		tst	r1, r2
+ 199 004c F7D1     		bne	.L27
+ 200 004e 494A     		ldr	r2, .L67+20
+ 201 0050 494B     		ldr	r3, .L67+24
+ 202 0052 5A80     		strh	r2, [r3, #2]
+ 203 0054 FFF7FEFF 		bl	waitForSync
+ 204 0058 484B     		ldr	r3, .L67+28
+ 205 005a 4948     		ldr	r0, .L67+32
+ 206 005c 2360     		str	r3, [r4]
+ 207 005e 8023     		mov	r3, #128
+ 208 0060 9B02     		lsl	r3, r3, #10
+ 209 0062 6360     		str	r3, [r4, #4]
+ 210 0064 FFF7FEFF 		bl	setBaud
+ 211 0068 6424     		mov	r4, #100
+ 212              	.L30:
+ 213 006a FA20     		mov	r0, #250
+ 214 006c 013C     		sub	r4, r4, #1
+ 215 006e 8000     		lsl	r0, r0, #2
+ 216 0070 E4B2     		uxtb	r4, r4
+ 217 0072 FFF7FEFF 		bl	delayUs
+ 218 0076 002C     		cmp	r4, #0
+ 219 0078 F7D1     		bne	.L30
+ 220 007a 0A25     		mov	r5, #10
+ 221              	.L32:
+ 222 007c 013D     		sub	r5, r5, #1
+ 223 007e FF20     		mov	r0, #255
+ 224 0080 EDB2     		uxtb	r5, r5
+ 225 0082 FFF7FEFF 		bl	xfer_spi
+ 226 0086 002D     		cmp	r5, #0
+ 227 0088 F8D1     		bne	.L32
+ 228 008a 4020     		mov	r0, #64
+ 229 008c 291C     		mov	r1, r5
+ 230 008e FFF7FEFF 		bl	send_cmd
+ 231 0092 041E     		sub	r4, r0, #0
+ 232 0094 012C     		cmp	r4, #1
+ 233 0096 01D0     		beq	.L33
+ 234              	.L38:
+ 235 0098 0024     		mov	r4, #0
+ 236 009a 4AE0     		b	.L34
+ 237              	.L33:
+ 238 009c D521     		mov	r1, #213
+ 239 009e 4820     		mov	r0, #72
+ 240 00a0 4900     		lsl	r1, r1, #1
+ 241 00a2 FFF7FEFF 		bl	send_cmd
+ 242 00a6 0128     		cmp	r0, #1
+ 243 00a8 1CD1     		bne	.L35
+ 244              	.L37:
+ 245 00aa FF20     		mov	r0, #255
+ 246 00ac FFF7FEFF 		bl	xfer_spi
+ 247 00b0 01AE     		add	r6, sp, #4
+ 248 00b2 A855     		strb	r0, [r5, r6]
+ 249 00b4 0135     		add	r5, r5, #1
+ 250 00b6 042D     		cmp	r5, #4
+ 251 00b8 F7D1     		bne	.L37
+ 252 00ba B378     		ldrb	r3, [r6, #2]
+ 253 00bc 012B     		cmp	r3, #1
+ 254 00be EBD1     		bne	.L38
+ 255 00c0 F378     		ldrb	r3, [r6, #3]
+ 256 00c2 AA2B     		cmp	r3, #170
+ 257 00c4 E8D1     		bne	.L38
+ 258 00c6 2F4C     		ldr	r4, .L67+36
+ 259              	.L39:
+ 260 00c8 8021     		mov	r1, #128
+ 261 00ca C905     		lsl	r1, r1, #23
+ 262 00cc E920     		mov	r0, #233
+ 263 00ce FFF7FEFF 		bl	send_cmd
+ 264 00d2 011E     		sub	r1, r0, #0
+ 265 00d4 1DD0     		beq	.L65
+ 266 00d6 6420     		mov	r0, #100
+ 267 00d8 013C     		sub	r4, r4, #1
+ 268 00da FFF7FEFF 		bl	delayUs
+ 269 00de 002C     		cmp	r4, #0
+ 270 00e0 F2D1     		bne	.L39
+ 271 00e2 D9E7     		b	.L38
+ 272              	.L35:
+ 273 00e4 E920     		mov	r0, #233
+ 274 00e6 291C     		mov	r1, r5
+ 275 00e8 FFF7FEFF 		bl	send_cmd
+ 276 00ec 4126     		mov	r6, #65
+ 277 00ee 0128     		cmp	r0, #1
+ 278 00f0 01D8     		bhi	.L43
+ 279 00f2 0224     		mov	r4, #2
+ 280 00f4 E926     		mov	r6, #233
+ 281              	.L43:
+ 282 00f6 234D     		ldr	r5, .L67+36
+ 283              	.L44:
+ 284 00f8 301C     		mov	r0, r6
+ 285 00fa 0021     		mov	r1, #0
+ 286 00fc FFF7FEFF 		bl	send_cmd
+ 287 0100 0028     		cmp	r0, #0
+ 288 0102 23D0     		beq	.L66
+ 289 0104 6420     		mov	r0, #100
+ 290 0106 013D     		sub	r5, r5, #1
+ 291 0108 FFF7FEFF 		bl	delayUs
+ 292 010c 002D     		cmp	r5, #0
+ 293 010e F3D1     		bne	.L44
+ 294 0110 C2E7     		b	.L38
+ 295              	.L65:
+ 296 0112 7A20     		mov	r0, #122
+ 297 0114 FFF7FEFF 		bl	send_cmd
+ 298 0118 041E     		sub	r4, r0, #0
+ 299 011a BDD1     		bne	.L38
+ 300              	.L48:
+ 301 011c FF20     		mov	r0, #255
+ 302 011e FFF7FEFF 		bl	xfer_spi
+ 303 0122 3055     		strb	r0, [r6, r4]
+ 304 0124 0134     		add	r4, r4, #1
+ 305 0126 042C     		cmp	r4, #4
+ 306 0128 F8D1     		bne	.L48
+ 307 012a 3378     		ldrb	r3, [r6]
+ 308 012c 5A06     		lsl	r2, r3, #25
+ 309 012e 00D5     		bpl	.L34
+ 310 0130 0C24     		mov	r4, #12
+ 311              	.L34:
+ 312 0132 154B     		ldr	r3, .L67+40
+ 313 0134 1C70     		strb	r4, [r3]
+ 314 0136 FFF7FEFF 		bl	deselect
+ 315 013a 002C     		cmp	r4, #0
+ 316 013c 02D0     		beq	.L47
+ 317 013e 1348     		ldr	r0, .L67+44
+ 318 0140 FFF7FEFF 		bl	setBaud
+ 319              	.L47:
+ 320 0144 6042     		neg	r0, r4
+ 321 0146 6041     		adc	r0, r0, r4
+ 322 0148 C0B2     		uxtb	r0, r0
+ 323              		@ sp needed
+ 324 014a 76BD     		pop	{r1, r2, r4, r5, r6, pc}
+ 325              	.L66:
+ 326 014c 8021     		mov	r1, #128
+ 327 014e 5020     		mov	r0, #80
+ 328 0150 8900     		lsl	r1, r1, #2
+ 329 0152 FFF7FEFF 		bl	send_cmd
+ 330 0156 4342     		neg	r3, r0
+ 331 0158 5841     		adc	r0, r0, r3
+ 332 015a 4042     		neg	r0, r0
+ 333 015c 0440     		and	r4, r0
+ 334 015e E8E7     		b	.L34
+ 335              	.L68:
+ 336              		.align	2
+ 337              	.L67:
+ 338 0160 03003E00 		.word	4063235
+ 339 0164 03003600 		.word	3538947
+ 340 0168 03003700 		.word	3604483
+ 341 016c 00040040 		.word	1073742848
+ 342 0170 001C0042 		.word	1107303424
+ 343 0174 19400000 		.word	16409
+ 344 0178 000C0040 		.word	1073744896
+ 345 017c 0C000100 		.word	65548
+ 346 0180 90D00300 		.word	250000
+ 347 0184 10270000 		.word	10000
+ 348 0188 00000000 		.word	.LANCHOR0
+ 349 018c 808D5B00 		.word	6000000
+ 351              		.section	.text.disk_readp,"ax",%progbits
+ 352              		.align	1
+ 353              		.global	disk_readp
+ 354              		.code	16
+ 355              		.thumb_func
+ 357              	disk_readp:
+ 358 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 359 0002 1E1C     		mov	r6, r3
+ 360 0004 1B4B     		ldr	r3, .L91
+ 361 0006 071C     		mov	r7, r0
+ 362 0008 1B78     		ldrb	r3, [r3]
+ 363 000a 141C     		mov	r4, r2
+ 364 000c 1A07     		lsl	r2, r3, #28
+ 365 000e 00D4     		bmi	.L70
+ 366 0010 4902     		lsl	r1, r1, #9
+ 367              	.L70:
+ 368 0012 5120     		mov	r0, #81
+ 369 0014 FFF7FEFF 		bl	send_cmd
+ 370 0018 0028     		cmp	r0, #0
+ 371 001a 01D0     		beq	.L71
+ 372              	.L74:
+ 373 001c 0125     		mov	r5, #1
+ 374 001e 25E0     		b	.L72
+ 375              	.L71:
+ 376 0020 154D     		ldr	r5, .L91+4
+ 377              	.L75:
+ 378 0022 FF20     		mov	r0, #255
+ 379 0024 FFF7FEFF 		bl	xfer_spi
+ 380 0028 FF28     		cmp	r0, #255
+ 381 002a 03D1     		bne	.L73
+ 382 002c 013D     		sub	r5, r5, #1
+ 383 002e 002D     		cmp	r5, #0
+ 384 0030 F7D1     		bne	.L75
+ 385 0032 F3E7     		b	.L74
+ 386              	.L73:
+ 387 0034 FE28     		cmp	r0, #254
+ 388 0036 F1D1     		bne	.L74
+ 389 0038 104D     		ldr	r5, .L91+8
+ 390 003a AD1B     		sub	r5, r5, r6
+ 391 003c 2D1B     		sub	r5, r5, r4
+ 392              	.L90:
+ 393 003e 002C     		cmp	r4, #0
+ 394 0040 01D1     		bne	.L79
+ 395 0042 3C1C     		mov	r4, r7
+ 396 0044 04E0     		b	.L77
+ 397              	.L79:
+ 398 0046 FF20     		mov	r0, #255
+ 399 0048 FFF7FEFF 		bl	xfer_spi
+ 400 004c 013C     		sub	r4, r4, #1
+ 401 004e F6E7     		b	.L90
+ 402              	.L77:
+ 403 0050 FF20     		mov	r0, #255
+ 404 0052 FFF7FEFF 		bl	xfer_spi
+ 405 0056 BB19     		add	r3, r7, r6
+ 406 0058 2070     		strb	r0, [r4]
+ 407 005a 0134     		add	r4, r4, #1
+ 408 005c A342     		cmp	r3, r4
+ 409 005e F7D1     		bne	.L77
+ 410              	.L81:
+ 411 0060 FF20     		mov	r0, #255
+ 412 0062 013D     		sub	r5, r5, #1
+ 413 0064 FFF7FEFF 		bl	xfer_spi
+ 414 0068 002D     		cmp	r5, #0
+ 415 006a F9D1     		bne	.L81
+ 416              	.L72:
+ 417 006c FFF7FEFF 		bl	deselect
+ 418              		@ sp needed
+ 419 0070 281C     		mov	r0, r5
+ 420 0072 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 421              	.L92:
+ 422              		.align	2
+ 423              	.L91:
+ 424 0074 00000000 		.word	.LANCHOR0
+ 425 0078 409C0000 		.word	40000
+ 426 007c 02020000 		.word	514
+ 428              		.section	.bss.CardType,"aw",%nobits
+ 429              		.set	.LANCHOR0,. + 0
+ 432              	CardType:
+ 433 0000 00       		.space	1
+ 434              		.ident	"GCC: (GNU Tools for ARM Embedded Processors) 4.8.3 20140228 (release) [ARM/embedded-4_8-br
+DEFINED SYMBOLS
+                            *ABS*:00000000 mmcbbp.c
+C:\cygwin\tmp\ccyGrp6c.s:16     .text.setBaud:00000000 $t
+C:\cygwin\tmp\ccyGrp6c.s:21     .text.setBaud:00000000 setBaud
+C:\cygwin\tmp\ccyGrp6c.s:53     .text.setBaud:00000034 $d
+C:\cygwin\tmp\ccyGrp6c.s:57     .text.deselect:00000000 $t
+C:\cygwin\tmp\ccyGrp6c.s:62     .text.deselect:00000000 deselect
+C:\cygwin\tmp\ccyGrp6c.s:72     .text.xfer_spi:00000000 $t
+C:\cygwin\tmp\ccyGrp6c.s:77     .text.xfer_spi:00000000 xfer_spi
+C:\cygwin\tmp\ccyGrp6c.s:96     .text.xfer_spi:0000001c $d
+C:\cygwin\tmp\ccyGrp6c.s:99     .text.send_cmd:00000000 $t
+C:\cygwin\tmp\ccyGrp6c.s:103    .text.send_cmd:00000000 send_cmd
+C:\cygwin\tmp\ccyGrp6c.s:160    .text.disk_initialize:00000000 $t
+C:\cygwin\tmp\ccyGrp6c.s:165    .text.disk_initialize:00000000 disk_initialize
+C:\cygwin\tmp\ccyGrp6c.s:338    .text.disk_initialize:00000160 $d
+C:\cygwin\tmp\ccyGrp6c.s:352    .text.disk_readp:00000000 $t
+C:\cygwin\tmp\ccyGrp6c.s:357    .text.disk_readp:00000000 disk_readp
+C:\cygwin\tmp\ccyGrp6c.s:424    .text.disk_readp:00000074 $d
+C:\cygwin\tmp\ccyGrp6c.s:432    .bss.CardType:00000000 CardType
+C:\cygwin\tmp\ccyGrp6c.s:433    .bss.CardType:00000000 $d
+
+UNDEFINED SYMBOLS
+__aeabi_uidiv
+pinConfig
+pinMux
+waitForSync
+delayUs
