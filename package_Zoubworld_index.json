@@ -22,40 +22,35 @@
           "checksum": "SHA-256:62a41a0bdd052816b3740b9b3111e630fb6e025cd691a4421ad6567329b04e2c",
           "size": "1802605",
           "boards": [
-            {"name": "Pilo"},
+            {"name": "Pilo"}
           ],
           "toolsDependencies": [
-            {
-              "packager": "arduino",
-              "name": "arm-none-eabi-gcc",
-              "version": "4.8.3-2014q1"
-            },
-            {
-              "packager": "zoubworld_Arduino",
-              "name": "bossac",
-	      "version": "1.7.0-zoubworld-1"
-            },
-            {
-              "packager": "arduino",
-              "name": "openocd",
-	      "version": "0.9.0-arduino"
-            },
-            {
-              "packager": "arduino",
-              "name": "CMSIS",
-              "version": "4.5.0"
-            },
-            {
-              "packager": "zoubworld_Arduino",
-              "name": "CMSIS-Atmel",
-	      "version": "1.0.0-zoubworld-1"
-            },
-            {
-              "packager": "arduino",
-              "name": "arduinoOTA",
-              "version": "1.2.0"
-            }
-          ]
+			{
+				"packager": "arduino",
+				"name": "arm-none-eabi-gcc",
+				"version": "4.8.3-2014q1"
+			},
+			{
+				"packager": "MattairTech_Arduino",
+				"name": "bossac",
+				"version": "1.5-arduino-mattairtech-1"
+			},
+			{
+				"packager": "arduino",
+				"name": "bossac",
+				"version": "1.5-arduino"
+			},
+			{
+				"packager": "arduino",
+				"name": "openocd",
+				"version": "0.9.0-arduino"
+			},
+			{
+				"packager": "arduino",
+				"name": "CMSIS",
+				"version": "4.0.0-atmel"
+			}
+			]
         }
       ],
       "tools": [

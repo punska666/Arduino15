@@ -15683,6 +15683,26 @@
       "checksum": "SHA-256:502e77f40427112d7f25e53b2b4b697c84aff6c918eb1a54a63ec884644bb6ae"
     },
     {
+      "name": "MQTT",
+      "version": "2.2.1",
+      "author": "Joel Gaehwiler \u003cjoel.gaehwiler@gmail.com\u003e",
+      "maintainer": "Joel Gaehwiler \u003cjoel.gaehwiler@gmail.com\u003e",
+      "sentence": "MQTT library for Arduino",
+      "paragraph": "This library bundles the lwmqtt client and adds a thin wrapper to get an Arduino like API.",
+      "website": "https://github.com/256dpi/arduino-mqtt",
+      "category": "Communication",
+      "architectures": [
+        "*"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/256dpi/MQTT-2.2.1.zip",
+      "archiveFileName": "MQTT-2.2.1.zip",
+      "size": 31245,
+      "checksum": "SHA-256:bc5fc76fe2ae61a1b59e0d38f7ecd365da7681ac4bacf328896a32fce538f1b3"
+    },
+    {
       "name": "Akafugu TWIDisplay Library",
       "version": "1.0.0",
       "author": "Akafugu",
@@ -51490,6 +51510,26 @@
       "checksum": "SHA-256:185c99ee996e06a56efee55a57c9d921e3cc00d1926d0321711c84c08f36c3df"
     },
     {
+      "name": "BufferUtils",
+      "version": "2.0.0",
+      "author": "Christopher Baker \u003cinfo@christopherbaker.net\u003e",
+      "maintainer": "Christopher Baker \u003cinfo@christopherbaker.net\u003e",
+      "sentence": "An Arduino library for working with Buffers.",
+      "paragraph": "An Arduino library for working with Buffers, inclding a BufferPrinter, BufferReader, BufferWriter and a RingBuffer.",
+      "website": "https://github.com/bakercp/BufferUtils",
+      "category": "Data Processing",
+      "architectures": [
+        "*"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/bakercp/BufferUtils-2.0.0.zip",
+      "archiveFileName": "BufferUtils-2.0.0.zip",
+      "size": 43108,
+      "checksum": "SHA-256:213b48e2b63a1b362b6a9a0426857964362db139a0ec6228fc73a0f5bd670216"
+    },
+    {
       "name": "PacketSerial",
       "version": "1.0.0",
       "author": "Christopher Baker \u003cinfo@christopherbaker.net\u003e",
@@ -51628,6 +51668,26 @@
       "archiveFileName": "CRC32-1.1.0.zip",
       "size": 4902,
       "checksum": "SHA-256:d58ea8965792d9ea83901e3888bd9699ca5a4637d86b907b8c05cc1ba6bb20f0"
+    },
+    {
+      "name": "CRC32",
+      "version": "2.0.0",
+      "author": "Christopher Baker \u003cinfo@christopherbaker.net\u003e",
+      "maintainer": "Christopher Baker \u003cinfo@christopherbaker.net\u003e",
+      "sentence": "An Arduino library for calculating a CRC32 checksum.",
+      "paragraph": "An Arduino library for calculating a CRC32 checksum.",
+      "website": "https://github.com/bakercp/CRC32",
+      "category": "Data Processing",
+      "architectures": [
+        "*"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/bakercp/CRC32-2.0.0.zip",
+      "archiveFileName": "CRC32-2.0.0.zip",
+      "size": 34803,
+      "checksum": "SHA-256:3561bd1d03d1eee81053cc3d986fd9816dc7684dfaeedfffdf511fe4ee6b8641"
     },
     {
       "name": "CD74HC4067",
@@ -63305,6 +63365,26 @@
       "checksum": "SHA-256:2f2fc82ce2b6e10d3a994c360179fd38cc18cf5ad30512466ed294849886af36"
     },
     {
+      "name": "Shutters",
+      "version": "3.0.0-beta.2",
+      "author": "Marvin ROGER",
+      "maintainer": "Marvin ROGER",
+      "sentence": "Allows non-smart roller-shutters to be percentage-controlled using time",
+      "paragraph": "Supports relays, RF, EEEPROM, SPIFFS, etc.",
+      "website": "https://github.com/marvinroger/arduino-shutters",
+      "category": "Device Control",
+      "architectures": [
+        "*"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/marvinroger/Shutters-3.0.0-beta.2.zip",
+      "archiveFileName": "Shutters-3.0.0-beta.2.zip",
+      "size": 10298,
+      "checksum": "SHA-256:71978179f3fffdcd4e934ca734e0baecabcd388dc0111cae93c8c2d448d65e4e"
+    },
+    {
       "name": "TeensyView",
       "version": "1.0.0",
       "author": "SparkFun Electronics \u003ctechsupport@sparkfun.com\u003e",
@@ -73846,6 +73926,27 @@
       "checksum": "SHA-256:fca1bdefbba8b99c9fcd6ce0efbc6c9a0935f786b53a4e7ed334fbb51bc901a4"
     },
     {
+      "name": "Ramp",
+      "version": "0.4.0",
+      "author": "Sylvain Garnavault \u003cgarnav@wanadoo.fr\u003e",
+      "maintainer": "Sylvain Garnavault \u003cgarnav@wanadoo.fr\u003e",
+      "sentence": "A library that manage interpolation beetween values.",
+      "paragraph": "This library integrates different interpolation modes to animate paremeters in your Arduino sketches. Very usefull to animate RGB Leds per example.",
+      "website": "https://github.com/siteswapjuggler",
+      "category": "Data Processing",
+      "architectures": [
+        "avr",
+        "samd"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/siteswapjuggler/Ramp-0.4.0.zip",
+      "archiveFileName": "Ramp-0.4.0.zip",
+      "size": 1495754,
+      "checksum": "SHA-256:58275be56d4982ae8dd24b6730ab0dac149b0f80dbee0fae943552566b754106"
+    },
+    {
       "name": "Unified Log",
       "version": "0.1.0",
       "author": "Simon Christmann \u003csimon@christmann.email\u003e",
@@ -75895,6 +75996,26 @@
       "checksum": "SHA-256:2a98166cb97444e8944783b23e05e033c51f54937bcb641f3ad692979a7906d6"
     },
     {
+      "name": "ssd1306",
+      "version": "1.3.0",
+      "author": "Alexey Dynda",
+      "maintainer": "Alexey Dynda \u003calexey.dynda@gmail.com\u003e",
+      "sentence": "SSD1306 i2c OLED Display driver, PCD8544 spi display driver",
+      "paragraph": "Provides API for working with 128x64 and 128x32 monochrome oled displays over i2c. Also, experimental support for PCD8544 84x48 display can be found. The library is intended for use with small microcontrollers with a little of SRAM. In simplest case it requires only 26 bytes of SRAM. Since ATTiny controllers have no division and multiply operations, the library uses shift operation to speed up calculations. And it still has enough API functions to implement graphics applications (refer to examples). It includes both internal own i2c communication implementation and can use Wire library. Since 1.3.0 the way of LCD initialization is changed, please refer to examples.",
+      "website": "https://github.com/lexus2k/ssd1306",
+      "category": "Display",
+      "architectures": [
+        "*"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/lexus2k/ssd1306-1.3.0.zip",
+      "archiveFileName": "ssd1306-1.3.0.zip",
+      "size": 2301916,
+      "checksum": "SHA-256:3ff12e9b433804e99b81e903dcd84fe05f7233c098f298e9b846981e587c2ee7"
+    },
+    {
       "name": "XYZrobotServo",
       "version": "1.0.0",
       "author": "Pololu",
@@ -76013,6 +76134,26 @@
       "archiveFileName": "Adafruit_BME680_Library-1.0.3.zip",
       "size": 296763,
       "checksum": "SHA-256:30a7e2e5e07d5c3d5c56e9437bbe19de1377210549f3be64a884775ace25f058"
+    },
+    {
+      "name": "Adafruit BME680 Library",
+      "version": "1.0.4",
+      "author": "Adafruit",
+      "maintainer": "Adafruit \u003cinfo@adafruit.com\u003e",
+      "sentence": "Arduino library for BME680 sensors.",
+      "paragraph": "Arduino library for BME680 humidity and pressure sensors.",
+      "website": "https://github.com/adafruit/Adafruit_BME680",
+      "category": "Sensors",
+      "architectures": [
+        "*"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/adafruit/Adafruit_BME680_Library-1.0.4.zip",
+      "archiveFileName": "Adafruit_BME680_Library-1.0.4.zip",
+      "size": 292091,
+      "checksum": "SHA-256:b69458dcaa47997c361283bde260281a40e10644d22fef72ba4aebd85593a64e"
     },
     {
       "name": "kRPC",
