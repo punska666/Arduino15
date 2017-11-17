@@ -31,9 +31,9 @@
 				"version": "4.8.3-2014q1"
 			},
 			{
-				"packager": "MattairTech_Arduino",
+				"packager": "zoubworld_Arduino",
 				"name": "bossac",
-				"version": "1.5-arduino-mattairtech-1"
+				"version": "1.7.0-zoubworld-1"
 			},
 			{
 				"packager": "arduino",

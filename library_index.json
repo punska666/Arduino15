@@ -18125,6 +18125,26 @@
       "checksum": "SHA-256:ae316dea40b27e544b774e786c3c0aeec1120ad7da192f7cd4de7c47c2e270d9"
     },
     {
+      "name": "Exosite",
+      "version": "2.6.1",
+      "author": "Applications Engineering \u003csupport@exosite.com\u003e",
+      "maintainer": "Applications Engineering \u003csupport@exosite.com\u003e",
+      "sentence": "Easily interface with Exosite's device HTTP API.",
+      "paragraph": "This allows you to easily read and write data, as well as download firmware from Exosite's Murano IoT Platform.",
+      "website": "https://github.com/exosite-garage/arduino_exosite_library/",
+      "category": "Communication",
+      "architectures": [
+        "*"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/exosite-garage/Exosite-2.6.1.zip",
+      "archiveFileName": "Exosite-2.6.1.zip",
+      "size": 2454103,
+      "checksum": "SHA-256:1aaa37e2f18fc0b36c0583d539c3027556dc426b2062a89e23ef4dd075feac1d"
+    },
+    {
       "name": "USB Host Shield Library 2.0",
       "version": "1.0.0",
       "author": "Oleg Mazurov (Circuits@Home) \u003cmazurov@circuitsathome.com\u003e, Kristian Lauszus (TKJ Electronics) \u003ckristianl@tkjelectronics.com\u003e, Andrew Kroll \u003cxxxajk@gmail.com\u003e, Alexei Glushchenko (Circuits@Home) \u003calex-gl@mail.ru\u003e",
@@ -19773,6 +19793,26 @@
       "checksum": "SHA-256:847b83d6f2534dc88c614a84e24256e45b2a7fb25f63db5577821046559aedbc"
     },
     {
+      "name": "aREST",
+      "version": "2.6.0",
+      "author": "Marco Schwartz",
+      "maintainer": "Marco Schwartz \u003cmarcolivier.schwartz@gmail.com\u003e",
+      "sentence": "RESTful API for the Arduino platform.",
+      "paragraph": "A simple library that implements a REST API for Arduino. It is designed to be universal and currently supports REST calls via HTTP, Serial \u0026 BLE.  See more at: http://arest.io/",
+      "website": "https://github.com/marcoschwartz/aREST",
+      "category": "Communication",
+      "architectures": [
+        "*"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/marcoschwartz/aREST-2.6.0.zip",
+      "archiveFileName": "aREST-2.6.0.zip",
+      "size": 40093,
+      "checksum": "SHA-256:2b5579f00ed0968dfce71a1c435ef70f40e9c5e3ddda024f86b85484de0afc79"
+    },
+    {
       "name": "aREST UI",
       "version": "1.0.1",
       "author": "Marco Schwartz",
@@ -20363,6 +20403,32 @@
       "archiveFileName": "SPIFlash-2.7.0.zip",
       "size": 142230,
       "checksum": "SHA-256:627d41e1571de208fdd8efac7a8361cbafc5ad516fc4dca218a1feea92befb09"
+    },
+    {
+      "name": "SPIFlash",
+      "version": "3.0.0",
+      "author": "Prajwal Bhattaram",
+      "maintainer": "Prajwal Bhattaram \u003cmarzogh@icloud.com\u003e",
+      "sentence": "SPI Flash library for Arduino.",
+      "paragraph": "This library enables read, write, erase and power functions on the following Flash chips - W25X05**, W25X10**, W25X20**, W25X40**, W25Q80**, W25Q16**, W25Q32**, W25Q64**, W25Q128**, W25Q256**, SST25VF064C, SST26VF064B \u0026 S25FL116K. All other Winbond flash chips can also be used with this library from v2.6.0 onwards. A number of Microchip, Cypress \u0026 Spansion chips can be used with with the library from v3.0.0 onwards. Refer to change log for further information about this release.",
+      "website": "https://github.com/Marzogh/SPIFlash",
+      "category": "Data Storage",
+      "architectures": [
+        "avr",
+        "sam",
+        "samd",
+        "esp8266",
+        "esp32",
+        "Simblee",
+        "stm32"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/Marzogh/SPIFlash-3.0.0.zip",
+      "archiveFileName": "SPIFlash-3.0.0.zip",
+      "size": 139759,
+      "checksum": "SHA-256:591bcb168528623e2a315f1f8c476047d70a0eb1fb9020c1af4b6f16310d4059"
     },
     {
       "name": "Radio",
@@ -75605,6 +75671,26 @@
       "checksum": "SHA-256:94ff7922a2db65ee3c4e257ae9b99b68fbaa988be279c264a42039f616d96b81"
     },
     {
+      "name": "ESPUI",
+      "version": "1.2.0",
+      "author": "Lukas Bachschwell",
+      "maintainer": "Lukas Bachschwell \u003clukas@lbsfilm.at\u003e",
+      "sentence": "ESP32 Web Interface Library",
+      "paragraph": "A simple library that implements a web graphical user interface for ESP32. It is simple to use and works side by side with your sketch.",
+      "website": "https://github.com/s00500/ESPUI",
+      "category": "Communication",
+      "architectures": [
+        "*"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/s00500/ESPUI-1.2.0.zip",
+      "archiveFileName": "ESPUI-1.2.0.zip",
+      "size": 214314,
+      "checksum": "SHA-256:be2e13ba600edded36cec339fafcfd1926163d3a09638442de8ab6a4c3e8498e"
+    },
+    {
       "name": "jm_Pin",
       "version": "1.0.0",
       "author": "Jean-Marc Paratte \u003cjean-marc@paratte.ch\u003e",
@@ -76560,6 +76646,26 @@
       "checksum": "SHA-256:05a30c097b30e1f8a8da7c35b710d6e6bce41499944b20ef6b4cb2fc51097a57"
     },
     {
+      "name": "SPIFFSReadServer",
+      "version": "0.0.4",
+      "author": "Ryan Downing",
+      "maintainer": "Ryan Downing",
+      "sentence": "SPIFFS Read Server",
+      "paragraph": "An SPI Flash File System (SPIFFS) server extension of the ESP8266WebServer.",
+      "website": "http://ryandowning.net/EasySSDP/",
+      "category": "Communication",
+      "architectures": [
+        "esp8266"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/r-downing/SPIFFSReadServer-0.0.4.zip",
+      "archiveFileName": "SPIFFSReadServer-0.0.4.zip",
+      "size": 6104,
+      "checksum": "SHA-256:cd358fd9adaabbb3bd747c57226b5f7da6fc9ce8fa13637f6890311cba904106"
+    },
+    {
       "name": "DS1624",
       "version": "1.0.0",
       "author": "Alessio Leoncini",
@@ -76578,6 +76684,26 @@
       "archiveFileName": "DS1624-1.0.0.zip",
       "size": 6131,
       "checksum": "SHA-256:d30c5809db0b8b89329ddaa5e15f501ff1a0083a06be93365e9d685ec2759500"
+    },
+    {
+      "name": "DS1624",
+      "version": "2.0.0",
+      "author": "Alessio Leoncini",
+      "maintainer": "Alessio Leoncini",
+      "sentence": "A library to interface with Maxim DS1624 temperature sensor and memory.",
+      "paragraph": "The DS1624 sensor from Maxim Integrated consists of a 256-byte nonvolatile EE memory and a direct-to-digital temperature sensor. The temperature data is provided in a 12-bit word with 0.0625°C resolution. A 2-wire serial interface allows access to storage memory, temperature reading and sensor configuration.",
+      "website": "https://www.technologytourist.com/DS1624-arduino-library",
+      "category": "Sensors",
+      "architectures": [
+        "*"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/bluemurder/DS1624-2.0.0.zip",
+      "archiveFileName": "DS1624-2.0.0.zip",
+      "size": 6273,
+      "checksum": "SHA-256:c946eb574d1f6b3924a979db285564a51abb23602fb91969c2bfc751e181ab2d"
     },
     {
       "name": "KeyboardAzertyFr",
@@ -76858,6 +76984,325 @@
       "archiveFileName": "ClosedCube_SHT31D-1.5.0.zip",
       "size": 303586,
       "checksum": "SHA-256:74878f89f4abcd2dfbff1dce907d89048ba0a2c9e5b44042f5e4aed7081bcaf8"
+    },
+    {
+      "name": "Adafruit SGP30 Sensor",
+      "version": "1.0.0",
+      "author": "Adafruit",
+      "maintainer": "Adafruit \u003cinfo@adafruit.com\u003e",
+      "sentence": "This is an Arduino library for the Adafruit SGP30 Gas / Air Quality Sensor",
+      "paragraph": "This is an Arduino library for the Adafruit SGP30 Gas / Air Quality Sensor",
+      "website": "https://github.com/adafruit/Adafruit_SGP30",
+      "category": "Sensors",
+      "architectures": [
+        "*"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/adafruit/Adafruit_SGP30_Sensor-1.0.0.zip",
+      "archiveFileName": "Adafruit_SGP30_Sensor-1.0.0.zip",
+      "size": 4688,
+      "checksum": "SHA-256:42e6a58655299ce4c174fb6cd64691334ad6a4c5a26a2ec89ac70decb225f306"
+    },
+    {
+      "name": "WEMOS Matrix Compatible With Adafruit GFX Library",
+      "version": "1.0.0",
+      "author": "Thomas O Fredericks",
+      "maintainer": "https://github.com/thomasfredericks",
+      "sentence": "Library for the WEMOS Matrix LED Shield compatible with Adafruit GFX Library",
+      "paragraph": "Requires Adafruit GFX Library. See its documentation for more information.",
+      "website": "https://github.com/thomasfredericks/wemos_matrix_gfx",
+      "category": "Device Control",
+      "architectures": [
+        "*"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/thomasfredericks/WEMOS_Matrix_Compatible_With_Adafruit_GFX_Library-1.0.0.zip",
+      "archiveFileName": "WEMOS_Matrix_Compatible_With_Adafruit_GFX_Library-1.0.0.zip",
+      "size": 3523,
+      "checksum": "SHA-256:787bf01d1c311deaa166e827d036f77985aa81aabcd701836da3f73371ebb7c4"
+    },
+    {
+      "name": "Adafruit_mp3",
+      "version": "1.0.0",
+      "author": "Dean Miller \u003cdean@adafruit.com\u003e",
+      "maintainer": "Dean Miller \u003cdean@adafruit.com\u003e",
+      "sentence": "mp3 decoder",
+      "website": "https://github.com/adafruit/Adafruit_MP3",
+      "category": "Data Processing",
+      "architectures": [
+        "*"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/adafruit/Adafruit_mp3-1.0.0.zip",
+      "archiveFileName": "Adafruit_mp3-1.0.0.zip",
+      "size": 492405,
+      "checksum": "SHA-256:6819df67b817152e3216be0e25baaa1ce1e525f3d1130212eb12a6a36e7a2372"
+    },
+    {
+      "name": "Adafruit_mp3",
+      "version": "1.0.1",
+      "author": "Dean Miller \u003cdean@adafruit.com\u003e",
+      "maintainer": "Dean Miller \u003cdean@adafruit.com\u003e",
+      "sentence": "mp3 decoder",
+      "website": "https://github.com/adafruit/Adafruit_MP3",
+      "category": "Data Processing",
+      "architectures": [
+        "*"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/adafruit/Adafruit_mp3-1.0.1.zip",
+      "archiveFileName": "Adafruit_mp3-1.0.1.zip",
+      "size": 492807,
+      "checksum": "SHA-256:6bdea0433e83c939749e31463b1718cc1e74b0fcd247b239bad137065bb2a7fa"
+    },
+    {
+      "name": "STEAMbot",
+      "version": "1.0.0",
+      "author": "Aram Perez, aram.perez at thesteamtrain.cc",
+      "maintainer": "The STEAM Train \u003cwww.thesteamtrain.cc\u003e",
+      "sentence": "Library that provides access to all the STEAMbot facilities.",
+      "paragraph": "This library allows a programmer to control a STEAMbot robot and its inputs and outputs.",
+      "website": "http://www.thesteamtrain.cc/",
+      "category": "Device Control",
+      "architectures": [
+        "*"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/The-STEAM-Train/STEAMbot-1.0.0.zip",
+      "archiveFileName": "STEAMbot-1.0.0.zip",
+      "size": 12689,
+      "checksum": "SHA-256:ad8495925ec3c73c724b1daa10e56f3d414895a21d106a42c56b0a20ab1f3f03"
+    },
+    {
+      "name": "StensTimer",
+      "version": "1.0.0",
+      "author": "Arjen Stens \u003cme@arjenstens.com\u003e",
+      "maintainer": "Arjen Stens \u003cme@arjenstens.com\u003e",
+      "sentence": "An accessible timer library that enables callbacks to a classes member-function.",
+      "paragraph": "Set a timer on any interval/timeout without having to deal with keeping track of time yourself.",
+      "website": "https://arjenstens.com/",
+      "category": "Timing",
+      "architectures": [
+        "avr"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/gitlab.com/arduino-libraries/StensTimer-1.0.0.zip",
+      "archiveFileName": "StensTimer-1.0.0.zip",
+      "size": 18263,
+      "checksum": "SHA-256:874b8c3ea409af9f929f30b9b18f425666aae28f731cfffcb11eca12352f42b0"
+    },
+    {
+      "name": "StensTimer",
+      "version": "1.1.0",
+      "author": "Arjen Stens \u003cme@arjenstens.com\u003e",
+      "maintainer": "Arjen Stens \u003cme@arjenstens.com\u003e",
+      "sentence": "An accessible Arduino timer library that enables you to use callbacks on class-instances as well as static callbacks (most commonly used).",
+      "paragraph": "Set a timer on any interval/timeout without having to deal with keeping track of time yourself.",
+      "website": "https://arjenstens.com/",
+      "category": "Timing",
+      "architectures": [
+        "avr"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/gitlab.com/arduino-libraries/StensTimer-1.1.0.zip",
+      "archiveFileName": "StensTimer-1.1.0.zip",
+      "size": 22777,
+      "checksum": "SHA-256:d408cd3a5fe5b242e9a3d4b45cff1ac5bbd3c4d843ff65683a2b96b20e427658"
+    },
+    {
+      "name": "ESP-DASH",
+      "version": "1.0.0",
+      "author": "Ayush Sharma",
+      "maintainer": "Ayush Sharma \u003casrocks5@gmail.com\u003e",
+      "sentence": "Create Effort-Less Dashboards to Manage your ESP8266.",
+      "paragraph": "A Library which Creates a GUI Dashboard to manage your ESP Device.",
+      "website": "https://github.com/ayushsharma82/ESP-DASH",
+      "category": "Communication",
+      "architectures": [
+        "*"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/ayushsharma82/ESP_DASH-1.0.0.zip",
+      "archiveFileName": "ESP_DASH-1.0.0.zip",
+      "size": 138898,
+      "checksum": "SHA-256:ac195664d42da580f55a8cde9dbd3c9070972e3eb7d222809db4b66c7b495834"
+    },
+    {
+      "name": "EasySSDP",
+      "version": "0.0.0",
+      "author": "Ryan Downing",
+      "maintainer": "Ryan Downing",
+      "sentence": "Easy, single function SSDP setup.",
+      "paragraph": "Easy SSDP setup function for ESP8266 on Arduino. Makes Devices visible on Windows Network",
+      "website": "https://github.com/r-downing/EasySSDP#easyssdp",
+      "category": "Communication",
+      "architectures": [
+        "esp8266"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/r-downing/EasySSDP-0.0.0.zip",
+      "archiveFileName": "EasySSDP-0.0.0.zip",
+      "size": 1597,
+      "checksum": "SHA-256:ce0d48980e19c6802063947ae6393e1b58f565cf70de4652ef7a8ae3417c7a0e"
+    },
+    {
+      "name": "ClosedCube BME680",
+      "version": "1.1.0",
+      "author": "ClosedCube",
+      "maintainer": "ClosedCube \u003cgithub@closedcube.com\u003e",
+      "sentence": "Arduino library for Bosch Sensortec BME680 integrated environmental (temperature, humidity, pressure, gas and in-door air quality) sensor",
+      "paragraph": "Arduino library for Bosch Sensortec BME680 integrated environmental (temperature, humidity, pressure, gas and in-door air quality) sensor",
+      "website": "https://github.com/closedcube/ClosedCube_BME680_Arduino",
+      "category": "Sensors",
+      "architectures": [
+        "*"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/closedcube/ClosedCube_BME680-1.1.0.zip",
+      "archiveFileName": "ClosedCube_BME680-1.1.0.zip",
+      "size": 9888,
+      "checksum": "SHA-256:77fb6c064992803f6e1f13cda6a096cb17fbfa94a15b7ce4c47989178b9d57d0"
+    },
+    {
+      "name": "LCD03",
+      "version": "1.1.1",
+      "author": "Ben Arblaster \u003cben@andatche.com\u003e",
+      "maintainer": "Ben Arblaster \u003cben@andatche.com\u003e",
+      "sentence": "A library for I2C control of the LCD03 20x4 and 16x2 serial LCD modules from Robot Electronics.",
+      "paragraph": "It aims to maintain compatibility with the Arduino LiquidCrystal library (version 0017 onwards) , though some features of LiquidCrystal are ommited and additonal features are provided. It supports all features of the LCD03 including custom characters and the ability to read the keypad. Supports Arudino 1.0.0 and newer.",
+      "website": "https://andatche.com/code/arduino/lcd03/",
+      "category": "Display",
+      "architectures": [
+        "avr"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/andatche/LCD03-1.1.1.zip",
+      "archiveFileName": "LCD03-1.1.1.zip",
+      "size": 20529,
+      "checksum": "SHA-256:e2eb7cd9b43ad895a19de36bb3ed8e7c57cc01ada864cab79a3913cede98c529"
+    },
+    {
+      "name": "LCD03",
+      "version": "1.1.2",
+      "author": "Ben Arblaster \u003cben@andatche.com\u003e",
+      "maintainer": "Ben Arblaster \u003cben@andatche.com\u003e",
+      "sentence": "A library for I2C control of the LCD03 20x4 and 16x2 serial LCD modules from Robot Electronics.",
+      "paragraph": "It aims to maintain compatibility with the Arduino LiquidCrystal library (version 0017 onwards) , though some features of LiquidCrystal are ommited and additonal features are provided. It supports all features of the LCD03 including custom characters and the ability to read the keypad. Supports Arudino 1.0.0 and newer.",
+      "website": "https://andatche.com/code/arduino/lcd03/",
+      "category": "Display",
+      "architectures": [
+        "avr",
+        "esp8266"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/andatche/LCD03-1.1.2.zip",
+      "archiveFileName": "LCD03-1.1.2.zip",
+      "size": 20698,
+      "checksum": "SHA-256:c5bc2b84a2ed48a422dce2b579926bf86f96fe5d8b0b5b37a8765a19866b021b"
+    },
+    {
+      "name": "SlipMassage",
+      "version": "1.0.0",
+      "author": "Thomas O Fredericks, Sofian Audry",
+      "maintainer": "https://github.com/SofaPirate",
+      "sentence": "SlipMassage is a microcontroller message packer and parser for the SLIP format in different protocols.",
+      "paragraph": "A massage message always starts with an address string and is followed by a user defined number of bytes, ints, longs, or floats.  The address string is used to route the message as in Open Sound Control. SlipMassage is the SLIP implementation of the Massage API (https://github.com/SofaPirate/Massenger). Massages can be sent and received over different communication protocols such as serial, UDP, or web sockets. Includes examples for Cycling 74 Max, Processing, Websockets and UDP.",
+      "website": "https://github.com/SofaPirate/SlipMassage",
+      "category": "Communication",
+      "architectures": [
+        "*"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/SofaPirate/SlipMassage-1.0.0.zip",
+      "archiveFileName": "SlipMassage-1.0.0.zip",
+      "size": 40196,
+      "checksum": "SHA-256:9867a6968c81c981af6e070893e765fdb79246b49fc68d9fd940f6f1139102b8"
+    },
+    {
+      "name": "MD_UISwitch",
+      "version": "1.0.0",
+      "author": "MajicDesigns",
+      "maintainer": "marco_c \u003c8136821@gmail.com\u003e",
+      "sentence": "Library for User Interface switches.",
+      "paragraph": "Library to uniformly encapsulate different types of switch based user input. Detects press, double press, long press, with software debounce and auto repeat. Handles simple switches, key matrices and analog resistor-ladder type switches.",
+      "website": "https://github.com/MajicDesigns/MD_UISwitch",
+      "category": "Signal Input/Output",
+      "architectures": [
+        "*"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/MajicDesigns/MD_UISwitch-1.0.0.zip",
+      "archiveFileName": "MD_UISwitch-1.0.0.zip",
+      "size": 952073,
+      "checksum": "SHA-256:2b4f5df72191e22d0b8f0643800ea5f896bd1d900ed87463794e5196040272ee"
+    },
+    {
+      "name": "Easyuino",
+      "version": "1.1.0",
+      "author": "Andre Pires \u003ceasyuino@gmail.com\u003e",
+      "maintainer": "Andre Pires \u003ceasyuino@gmail.com\u003e",
+      "sentence": "Easyuino Library offer a set of APIs to interact with some sensors and devices connected with Arduino",
+      "paragraph": "It is developed to provide a simple API to interact with Relays, RGB leds, Ultrasonic modules, GSM modules, etc in order to make a beginner do a lot of different stuff with the same library",
+      "website": "https://github.com/strabox/Easyuino",
+      "category": "Uncategorized",
+      "architectures": [
+        "avr"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/Strabox/Easyuino-1.1.0.zip",
+      "archiveFileName": "Easyuino-1.1.0.zip",
+      "size": 3965425,
+      "checksum": "SHA-256:a7f3906394e0ecd46cdd97df19d20d736d1ba5d9dff7a86b6d2852ecd37462c4"
+    },
+    {
+      "name": "Easyuino",
+      "version": "1.0.0",
+      "author": "Andre Pires \u003ceasyuino@gmail.com\u003e",
+      "maintainer": "Andre Pires \u003ceasyuino@gmail.com\u003e",
+      "sentence": "Easyuino Library offer a set of APIs to interact with some sensors and devices connected with Arduino",
+      "paragraph": "It is developed to provide a simple API to interact with Relays, RGB leds, Ultrasonic modules, GSM modules, etc in order to make a beginner do a lot of different stuff with the same library",
+      "website": "https://github.com/strabox/Easyuino",
+      "category": "Uncategorized",
+      "architectures": [
+        "avr"
+      ],
+      "types": [
+        "Contributed"
+      ],
+      "url": "http://downloads.arduino.cc/libraries/github.com/Strabox/Easyuino-1.0.0.zip",
+      "archiveFileName": "Easyuino-1.0.0.zip",
+      "size": 3959922,
+      "checksum": "SHA-256:70f115d6f6084113f6d474184f0239dfb1c5ed1670664ab35d966ce0776ab9e0"
     }
   ]
 }
