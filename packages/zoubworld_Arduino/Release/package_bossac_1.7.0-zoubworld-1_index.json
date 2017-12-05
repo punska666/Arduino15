@@ -1,0 +1,49 @@
+        {
+          "name": "bossac",
+          "version": "1.7.0-zoubworld-1",
+          "systems":
+          [
+            {
+              "host": "i686-mingw32",
+              "url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/v1.7.0-zoubworld-1/bossac-1.7.0-zoubworld-1.tar.bz2",
+              "archiveFileName": "bossac-1.7.0-zoubworld-1.tar.bz2",
+              "checksum": "SHA-256:d7f4ecb0ec4c4d427d826b44104a64ac7ecee491c0e409fc7232f4f2ebf341d8",
+              "size": "311488"
+            },
+            {
+              "host": "x86_64-apple-darwin",
+              "url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/v1.7.0-zoubworld-1/bossac-1.7.0-zoubworld-1.tar.bz2",
+              "archiveFileName": "bossac-1.7.0-zoubworld-1.tar.bz2",
+              "checksum": "SHA-256:d7f4ecb0ec4c4d427d826b44104a64ac7ecee491c0e409fc7232f4f2ebf341d8",
+              "size": "311488"
+            },
+            {
+              "host": "x86_64-pc-linux-gnu",
+              "url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/v1.7.0-zoubworld-1/bossac-1.7.0-zoubworld-1.tar.bz2",
+              "archiveFileName": "bossac-1.7.0-zoubworld-1.tar.bz2",
+              "checksum": "SHA-256:d7f4ecb0ec4c4d427d826b44104a64ac7ecee491c0e409fc7232f4f2ebf341d8",
+              "size": "311488"
+            },
+            {
+              "host": "i686-pc-linux-gnu",
+              "url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/v1.7.0-zoubworld-1/bossac-1.7.0-zoubworld-1.tar.bz2",
+              "archiveFileName": "bossac-1.7.0-zoubworld-1.tar.bz2",
+              "checksum": "SHA-256:d7f4ecb0ec4c4d427d826b44104a64ac7ecee491c0e409fc7232f4f2ebf341d8",
+              "size": "311488"
+            },
+            {
+              "host": "arm-linux-gnueabihf",
+              "url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/v1.7.0-zoubworld-1/bossac-1.7.0-zoubworld-1.tar.bz2",
+              "archiveFileName": "bossac-1.7.0-zoubworld-1.tar.bz2",
+              "checksum": "SHA-256:d7f4ecb0ec4c4d427d826b44104a64ac7ecee491c0e409fc7232f4f2ebf341d8",
+              "size": "311488"
+            },
+            {
+              "host": "all",
+              "url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/v1.7.0-zoubworld-1/bossac-1.7.0-zoubworld-1.tar.bz2",
+              "archiveFileName": "bossac-1.7.0-zoubworld-1.tar.bz2",
+              "checksum": "SHA-256:d7f4ecb0ec4c4d427d826b44104a64ac7ecee491c0e409fc7232f4f2ebf341d8",
+              "size": "311488"
+            }
+          ]
+        },

@@ -1960,6 +1960,60 @@
           ]
         },
         {
+          "name": "Arduino SAMD Boards (32-bits ARM Cortex-M0+)",
+          "architecture": "samd",
+          "version": "1.6.17",
+          "category": "Arduino",
+          "url": "http://downloads.arduino.cc/cores/samd-1.6.17.tar.bz2",
+          "archiveFileName": "samd-1.6.17.tar.bz2",
+          "checksum": "SHA-256:2c691c23cdf9974526ff33f19b7b060b5c03b7cb4708f61f8eb2629666c3c278",
+          "size": "2849852",
+          "boards": [
+            { "name": "Arduino/Genuino Zero" },
+            { "name": "Arduino/Genuino MKR1000" },
+            { "name": "Arduino MKRZERO" },
+            { "name": "Arduino MKR FOX 1200" },
+            { "name": "Arduino MKR WAN 1300" },
+            { "name": "Arduino MKR GSM 1400" },
+            { "name": "Arduino M0 Pro" },
+            { "name": "Arduino M0" },
+            { "name": "Arduino Tian" },
+            { "name": "Adafruit Circuit Playground Express" }
+          ],
+          "toolsDependencies": [
+            {
+              "packager": "arduino",
+              "name": "arm-none-eabi-gcc",
+              "version": "4.8.3-2014q1"
+            },
+            {
+              "packager": "arduino",
+              "name": "bossac",
+              "version": "1.7.0"
+            },
+            {
+              "packager": "arduino",
+              "name": "openocd",
+              "version": "0.9.0-arduino6-static"
+            },
+            {
+              "packager": "arduino",
+              "name": "CMSIS",
+              "version": "4.5.0"
+            },
+            {
+              "packager": "arduino",
+              "name": "CMSIS-Atmel",
+              "version": "1.1.0"
+            },
+            {
+              "packager": "arduino",
+              "name": "arduinoOTA",
+              "version": "1.2.0"
+            }
+          ]
+        },
+        {
           "name": "Arduino STM32F4 Boards",
           "architecture": "stm32f4",
           "version": "1.0.0",
@@ -3765,9 +3819,9 @@
           "category": "Arduino Certified",
           "archiveFileName": "corelibs-arduino101-2.0.2.zip",
           "architecture": "arc32",
-          "url": "https://github.com/01org/corelibs-arduino101/archive/2.0.2.zip",
-          "checksum": "SHA-256:cc81c46b5da7d7ec94e672f1cca509b03827828c60435d75eb60e7b9ba9da253",
-          "size": "6244732",
+          "url": "https://github.com/arduino/ArduinoCore-arc32/archive/2.0.2.zip",
+          "checksum": "SHA-256:2cea02dee6959f784c6bb6bdb2dc0eafa4c4d0ce5539da9cfa64dd6ce50939fe",
+          "size": "6242776",
           "boards": [
             {
               "name": "Arduino/Genuino 101"
@@ -4695,89 +4749,6 @@
             {"name": "EMoRo 2560. Board based on ATmega 2560 MCU"}
           ],
           "toolsDependencies": [
-          ]
-        }
-      ],
-      "tools": [
-      ]
-    },
-    {
-      "name": "AMEL",
-      "maintainer": "replaced by Arrow Boards",
-      "websiteURL": "http://www.amel-tech.com",
-      "email": "dev@amel-tech.com",
-      "help": {
-        "online": "http://www.amel-tech.com"
-      },
-      "platforms": [
-        {
-          "name": "AMEL-Tech Boards",
-          "architecture": "samd",
-          "version": "1.0.0",
-          "category": "Partner",
-          "url": "http://downloads.arduino.cc/cores/AMEL-samd-1.0.0.tar.bz2",
-          "archiveFileName": "AMEL-samd-1.0.0.tar.bz2",
-          "checksum": "SHA-256:5399602a89cba1e5371d3c4b2ae17648b6c9f691454a46a58bc0e68b30ab60da",
-          "size": "59673",
-          "boards": [
-            {"name": "SmartEverything Fox"}
-          ],
-          "toolsDependencies": [
-            {
-              "packager": "arduino",
-              "name": "arm-none-eabi-gcc",
-              "version": "4.8.3-2014q1"
-            },
-            {
-              "packager": "arduino",
-              "name": "bossac",
-              "version": "1.5-arduino"
-            },
-            {
-              "packager": "arduino",
-              "name": "openocd",
-              "version": "0.9.0-arduino"
-            },
-            {
-              "packager": "arduino",
-              "name": "CMSIS",
-              "version": "4.0.0-atmel"
-            }
-          ]
-        },
-        {
-          "name": "AMEL-Tech Boards",
-          "architecture": "samd",
-          "version": "1.1.0",
-          "category": "Partner",
-          "url": "http://downloads.arduino.cc/cores/AMEL-samd-1.1.0.tar.bz2",
-          "archiveFileName": "AMEL-samd-1.1.0.tar.bz2",
-          "checksum": "SHA-256:4bfc5f40e1456f600aa86745dab53d5df9fac8e15bcd977ca181d0a9f1cf1ed8",
-          "size": "36575",
-          "boards": [
-            {"name": "SmartEverything Fox"}
-          ],
-          "toolsDependencies": [
-            {
-              "packager": "arduino",
-              "name": "arm-none-eabi-gcc",
-              "version": "4.8.3-2014q1"
-            },
-            {
-              "packager": "arduino",
-              "name": "bossac",
-              "version": "1.5-arduino"
-            },
-            {
-              "packager": "arduino",
-              "name": "openocd",
-              "version": "0.9.0-arduino"
-            },
-            {
-              "packager": "arduino",
-              "name": "CMSIS",
-              "version": "4.0.0-atmel"
-            }
           ]
         }
       ],
