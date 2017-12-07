@@ -3,13 +3,12 @@
 	"architecture": "samd",
 	"version": "1.6.16-beta-b",
 	"category": "Contributed",
-	"url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/Zoubworld_sam_m0p-1.6.16-beta-b.tar.bz2",
+	"url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Release/Zoubworld_sam_m0p-1.6.16-beta-b.tar.bz2",
 	"archiveFileName": "Zoubworld_sam_m0p-1.6.16-beta-b.tar.bz2",
 	"checksum": "SHA-256:c079258210df355f6b0de11650d0369f669cd35c1a24538cf10560a1f8b7668a",
 	"size": "39344112",
 	"boards": [
-	{"name": "MT-D21E"},
-	{"name": "MT-D11"}
+	{"name": "Pilo"}
 	],
 	"toolsDependencies": [
 	{

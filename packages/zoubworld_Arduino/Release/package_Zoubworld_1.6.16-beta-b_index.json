@@ -1,18 +1,27 @@
 
 {
   "packages": [
+  {   
+ "name": "zoubworld_Arduino",
+      "maintainer": "zoubworld LLC",
+      "websiteURL": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/",
+      "email": "support@zoubworld.com",
+      "help": {
+        "online": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/support/"
+      },
+      "platforms": [
+        
 {
 	"name": "zoubworld SAM M0+ Boards",
 	"architecture": "samd",
 	"version": "1.6.16-beta-b",
 	"category": "Contributed",
-	"url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/Zoubworld_sam_m0p-1.6.16-beta-b.tar.bz2",
+	"url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Release/Zoubworld_sam_m0p-1.6.16-beta-b.tar.bz2",
 	"archiveFileName": "Zoubworld_sam_m0p-1.6.16-beta-b.tar.bz2",
 	"checksum": "SHA-256:c079258210df355f6b0de11650d0369f669cd35c1a24538cf10560a1f8b7668a",
 	"size": "39344112",
 	"boards": [
-	{"name": "MT-D21E"},
-	{"name": "MT-D11"}
+	{"name": "Pilo"}
 	],
 	"toolsDependencies": [
 	{
@@ -47,8 +56,8 @@
 	}
 	]
 }
-   ],>>./Release/package_Zoubworld_1.6.16-beta-b_index.json
-echo  tools: [
+   ],
+      "tools": [
         {
           "name": "bossac",
           "version": "1.7.0-zoubworld-1",
@@ -56,42 +65,42 @@ echo  tools: [
           [
             {
               "host": "i686-mingw32",
-              "url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/v1.7.0-zoubworld-1/bossac-1.7.0-zoubworld-1.tar.bz2",
+              "url": "http://www.zoubworld.com/~zoubworld_Arduino/files/Realease/v1.7.0-zoubworld-1/bossac-1.7.0-zoubworld-1.tar.bz2",
               "archiveFileName": "bossac-1.7.0-zoubworld-1.tar.bz2",
               "checksum": "SHA-256:d7f4ecb0ec4c4d427d826b44104a64ac7ecee491c0e409fc7232f4f2ebf341d8",
               "size": "311488"
             },
             {
               "host": "x86_64-apple-darwin",
-              "url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/v1.7.0-zoubworld-1/bossac-1.7.0-zoubworld-1.tar.bz2",
+              "url": "http://www.zoubworld.com/~zoubworld_Arduino/files/Realease/v1.7.0-zoubworld-1/bossac-1.7.0-zoubworld-1.tar.bz2",
               "archiveFileName": "bossac-1.7.0-zoubworld-1.tar.bz2",
               "checksum": "SHA-256:d7f4ecb0ec4c4d427d826b44104a64ac7ecee491c0e409fc7232f4f2ebf341d8",
               "size": "311488"
             },
             {
               "host": "x86_64-pc-linux-gnu",
-              "url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/v1.7.0-zoubworld-1/bossac-1.7.0-zoubworld-1.tar.bz2",
+              "url": "http://www.zoubworld.com/~zoubworld_Arduino/files/Realease/v1.7.0-zoubworld-1/bossac-1.7.0-zoubworld-1.tar.bz2",
               "archiveFileName": "bossac-1.7.0-zoubworld-1.tar.bz2",
               "checksum": "SHA-256:d7f4ecb0ec4c4d427d826b44104a64ac7ecee491c0e409fc7232f4f2ebf341d8",
               "size": "311488"
             },
             {
               "host": "i686-pc-linux-gnu",
-              "url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/v1.7.0-zoubworld-1/bossac-1.7.0-zoubworld-1.tar.bz2",
+              "url": "http://www.zoubworld.com/~zoubworld_Arduino/files/Realease/v1.7.0-zoubworld-1/bossac-1.7.0-zoubworld-1.tar.bz2",
               "archiveFileName": "bossac-1.7.0-zoubworld-1.tar.bz2",
               "checksum": "SHA-256:d7f4ecb0ec4c4d427d826b44104a64ac7ecee491c0e409fc7232f4f2ebf341d8",
               "size": "311488"
             },
             {
               "host": "arm-linux-gnueabihf",
-              "url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/v1.7.0-zoubworld-1/bossac-1.7.0-zoubworld-1.tar.bz2",
+              "url": "http://www.zoubworld.com/~zoubworld_Arduino/files/Realease/v1.7.0-zoubworld-1/bossac-1.7.0-zoubworld-1.tar.bz2",
               "archiveFileName": "bossac-1.7.0-zoubworld-1.tar.bz2",
               "checksum": "SHA-256:d7f4ecb0ec4c4d427d826b44104a64ac7ecee491c0e409fc7232f4f2ebf341d8",
               "size": "311488"
             },
             {
               "host": "all",
-              "url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/v1.7.0-zoubworld-1/bossac-1.7.0-zoubworld-1.tar.bz2",
+              "url": "http://www.zoubworld.com/~zoubworld_Arduino/files/Realease/v1.7.0-zoubworld-1/bossac-1.7.0-zoubworld-1.tar.bz2",
               "archiveFileName": "bossac-1.7.0-zoubworld-1.tar.bz2",
               "checksum": "SHA-256:d7f4ecb0ec4c4d427d826b44104a64ac7ecee491c0e409fc7232f4f2ebf341d8",
               "size": "311488"
@@ -105,49 +114,49 @@ echo  tools: [
           [
             {
               "host": "i686-mingw32",
-              "url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/v1.1.0/CMSIS-Atmel-1.1.0.tar.bz2",
+              "url": "http://www.zoubworld.com/~zoubworld_Arduino/files/Realease/v1.1.0/CMSIS-Atmel-1.1.0.tar.bz2",
               "archiveFileName": "CMSIS-Atmel-1.1.0.tar.bz2",
               "checksum": "SHA-256:16cb9870488c3a0c81cb5a3bdafa274d8432919521cf6a91f053027ef1e9145c",
               "size": "2084845"
             },
             {
               "host": "x86_64-apple-darwin",
-              "url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/v1.1.0/CMSIS-Atmel-1.1.0.tar.bz2",
+              "url": "http://www.zoubworld.com/~zoubworld_Arduino/files/Realease/v1.1.0/CMSIS-Atmel-1.1.0.tar.bz2",
               "archiveFileName": "CMSIS-Atmel-1.1.0.tar.bz2",
               "checksum": "SHA-256:16cb9870488c3a0c81cb5a3bdafa274d8432919521cf6a91f053027ef1e9145c",
               "size": "2084845"
             },
             {
               "host": "x86_64-pc-linux-gnu",
-              "url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/v1.1.0/CMSIS-Atmel-1.1.0.tar.bz2",
+              "url": "http://www.zoubworld.com/~zoubworld_Arduino/files/Realease/v1.1.0/CMSIS-Atmel-1.1.0.tar.bz2",
               "archiveFileName": "CMSIS-Atmel-1.1.0.tar.bz2",
               "checksum": "SHA-256:16cb9870488c3a0c81cb5a3bdafa274d8432919521cf6a91f053027ef1e9145c",
               "size": "2084845"
             },
             {
               "host": "i686-pc-linux-gnu",
-              "url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/v1.1.0/CMSIS-Atmel-1.1.0.tar.bz2",
+              "url": "http://www.zoubworld.com/~zoubworld_Arduino/files/Realease/v1.1.0/CMSIS-Atmel-1.1.0.tar.bz2",
               "archiveFileName": "CMSIS-Atmel-1.1.0.tar.bz2",
               "checksum": "SHA-256:16cb9870488c3a0c81cb5a3bdafa274d8432919521cf6a91f053027ef1e9145c",
               "size": "2084845"
             },
             {
               "host": "arm-linux-gnueabihf",
-              "url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/v1.1.0/CMSIS-Atmel-1.1.0.tar.bz2",
+              "url": "http://www.zoubworld.com/~zoubworld_Arduino/files/Realease/v1.1.0/CMSIS-Atmel-1.1.0.tar.bz2",
               "archiveFileName": "CMSIS-Atmel-1.1.0.tar.bz2",
               "checksum": "SHA-256:16cb9870488c3a0c81cb5a3bdafa274d8432919521cf6a91f053027ef1e9145c",
               "size": "2084845"
             },
             {
               "host": "all",
-              "url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/v1.1.0/CMSIS-Atmel-1.1.0.tar.bz2",
+              "url": "http://www.zoubworld.com/~zoubworld_Arduino/files/Realease/v1.1.0/CMSIS-Atmel-1.1.0.tar.bz2",
               "archiveFileName": "CMSIS-Atmel-1.1.0.tar.bz2",
               "checksum": "SHA-256:16cb9870488c3a0c81cb5a3bdafa274d8432919521cf6a91f053027ef1e9145c",
               "size": "2084845"
             }
           ]
         }
-  ] 
-      } 
+	  ] 
+	      } 
   ] 
 } 

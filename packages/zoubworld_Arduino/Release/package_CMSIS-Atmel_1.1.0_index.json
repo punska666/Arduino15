@@ -5,42 +5,42 @@
           [
             {
               "host": "i686-mingw32",
-              "url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/v1.1.0/CMSIS-Atmel-1.1.0.tar.bz2",
+              "url": "http://www.zoubworld.com/~zoubworld_Arduino/files/Realease/v1.1.0/CMSIS-Atmel-1.1.0.tar.bz2",
               "archiveFileName": "CMSIS-Atmel-1.1.0.tar.bz2",
               "checksum": "SHA-256:16cb9870488c3a0c81cb5a3bdafa274d8432919521cf6a91f053027ef1e9145c",
               "size": "2084845"
             },
             {
               "host": "x86_64-apple-darwin",
-              "url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/v1.1.0/CMSIS-Atmel-1.1.0.tar.bz2",
+              "url": "http://www.zoubworld.com/~zoubworld_Arduino/files/Realease/v1.1.0/CMSIS-Atmel-1.1.0.tar.bz2",
               "archiveFileName": "CMSIS-Atmel-1.1.0.tar.bz2",
               "checksum": "SHA-256:16cb9870488c3a0c81cb5a3bdafa274d8432919521cf6a91f053027ef1e9145c",
               "size": "2084845"
             },
             {
               "host": "x86_64-pc-linux-gnu",
-              "url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/v1.1.0/CMSIS-Atmel-1.1.0.tar.bz2",
+              "url": "http://www.zoubworld.com/~zoubworld_Arduino/files/Realease/v1.1.0/CMSIS-Atmel-1.1.0.tar.bz2",
               "archiveFileName": "CMSIS-Atmel-1.1.0.tar.bz2",
               "checksum": "SHA-256:16cb9870488c3a0c81cb5a3bdafa274d8432919521cf6a91f053027ef1e9145c",
               "size": "2084845"
             },
             {
               "host": "i686-pc-linux-gnu",
-              "url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/v1.1.0/CMSIS-Atmel-1.1.0.tar.bz2",
+              "url": "http://www.zoubworld.com/~zoubworld_Arduino/files/Realease/v1.1.0/CMSIS-Atmel-1.1.0.tar.bz2",
               "archiveFileName": "CMSIS-Atmel-1.1.0.tar.bz2",
               "checksum": "SHA-256:16cb9870488c3a0c81cb5a3bdafa274d8432919521cf6a91f053027ef1e9145c",
               "size": "2084845"
             },
             {
               "host": "arm-linux-gnueabihf",
-              "url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/v1.1.0/CMSIS-Atmel-1.1.0.tar.bz2",
+              "url": "http://www.zoubworld.com/~zoubworld_Arduino/files/Realease/v1.1.0/CMSIS-Atmel-1.1.0.tar.bz2",
               "archiveFileName": "CMSIS-Atmel-1.1.0.tar.bz2",
               "checksum": "SHA-256:16cb9870488c3a0c81cb5a3bdafa274d8432919521cf6a91f053027ef1e9145c",
               "size": "2084845"
             },
             {
               "host": "all",
-              "url": "http://lfbn-1-14132-125.w90-12.abo.wanadoo.fr/~zoubworld_Arduino/files/Realease/v1.1.0/CMSIS-Atmel-1.1.0.tar.bz2",
+              "url": "http://www.zoubworld.com/~zoubworld_Arduino/files/Realease/v1.1.0/CMSIS-Atmel-1.1.0.tar.bz2",
               "archiveFileName": "CMSIS-Atmel-1.1.0.tar.bz2",
               "checksum": "SHA-256:16cb9870488c3a0c81cb5a3bdafa274d8432919521cf6a91f053027ef1e9145c",
               "size": "2084845"
